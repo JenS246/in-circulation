@@ -4,6 +4,8 @@ In Circulation is a tiny daily publication for one carefully sourced quotation a
 
 The included records are obvious editorial placeholders. They are not presented as historical quotations. Replace them with curator-supplied, rights-reviewed sources before launch.
 
+Hosted Site: <https://in-circulation.dschnei1122.chatgpt.site>
+
 ## Why this stack
 
 The site uses Vinext with React Server Components, Cloudflare D1 (SQLite), and native CSS. D1 provides durable records, filtering, and inexpensive backups without a separate database service. ChatGPT sign-in protects the editor, while server-side authorization can restrict it to configured curator email addresses. There is no AI quote generation and no AI text processing.
