@@ -19,10 +19,10 @@ function shell(content, active = '') {
   const current = (name) => active === name ? ' aria-current="page"' : '';
   return `<div class="shell">
     <header class="masthead"><a class="wordmark" href="#/">${SITE_TITLE}</a><nav aria-label="Primary">
-      <a href="#/archive"${current('archive')}>Archive</a><a href="#/stats"${current('stats')}>Index</a><a href="#/admin"${current('admin')}>Editor</a>
+      <a href="#/"${current('home')}>Today</a><a href="#/archive"${current('archive')}>Archive</a><a href="#/stats"${current('stats')}>Index</a>
     </nav></header>
     ${content}
-    <footer class="site-footer"><span>One quotation, each day.</span><span>Text preserved as sourced.</span></footer>
+    <footer class="site-footer"><p>One sourced quotation each day.</p><nav aria-label="Publication links"><a href="#/admin">Curator sign-in</a><a href="https://github.com/JenS246/in-circulation">Source code</a></nav></footer>
   </div>`;
 }
 
@@ -50,20 +50,21 @@ async function adminApi(path, options = {}) {
 function creator(quote) { return quote.speaker && quote.speaker !== quote.author ? quote.speaker : quote.author; }
 function copyText(quote) {
   const attribution = `${creator(quote)}, ${quote.title}${quote.year ? ` (${quote.year})` : ''}`;
-  return `${quote.quote}\n\n— ${attribution}`;
+  return `${quote.quote}\n\n${attribution}`;
 }
 
 function quoteView(quote, dateLabel, today = false) {
   const name = creator(quote);
+  const lengthClass = quote.quote.length > 240 ? 'is-long' : quote.quote.length > 130 ? 'is-medium' : 'is-short';
   return `<main id="main" class="daily-edition">
-    <div class="edition-index" aria-label="Edition details"><span>${today ? 'Today' : 'Archive'}</span><time datetime="${escapeHtml(quote.publishedDate || quote.publishDate || '')}">${escapeHtml(dateLabel)}</time></div>
-    <figure class="quotation"><blockquote>${escapeHtml(quote.quote)}</blockquote><figcaption>
+    <div class="edition-index" aria-label="Edition details"><time datetime="${escapeHtml(quote.publishedDate || quote.publishDate || '')}">${escapeHtml(dateLabel)}</time><span>${today ? 'Today’s quotation' : 'From the archive'}</span></div>
+    <figure class="quotation ${lengthClass}"><blockquote>${escapeHtml(quote.quote)}</blockquote><figcaption>
       <strong>${escapeHtml(name)}</strong>
       ${quote.speaker && quote.speaker !== quote.author ? `<span>Written by ${escapeHtml(quote.author)}</span>` : ''}
       <span><cite>${escapeHtml(quote.title)}</cite>${quote.year ? `, ${escapeHtml(quote.year)}` : ''}</span>
     </figcaption></figure>
     <footer class="source-note"><div class="source-copy">
-      <p>${escapeHtml(quote.sourceType)}${quote.repository ? ` · ${escapeHtml(quote.repository)}` : ''}</p>
+      <p class="source-meta"><span>${escapeHtml(quote.sourceType)}</span>${quote.repository ? `<span>${escapeHtml(quote.repository)}</span>` : ''}</p>
       ${quote.sourceCitation ? `<p>${escapeHtml(quote.sourceCitation)}</p>` : ''}
       ${quote.context ? `<p class="public-context">${escapeHtml(quote.context)}</p>` : ''}
       <p class="rights">${escapeHtml(quote.publicDomainStatus)}${quote.rightsNote ? `. ${escapeHtml(quote.rightsNote)}` : ''}</p>
@@ -100,19 +101,19 @@ async function home() {
     app.innerHTML = shell('<main id="main" class="empty-edition"><div><h1>No edition today.</h1><p>The curator has not scheduled an eligible quotation.</p><a href="#/archive">Browse the archive</a></div></main>');
     return;
   }
-  app.innerHTML = shell(quoteView(result.quote, formatDate(result.date), true));
+  app.innerHTML = shell(quoteView(result.quote, formatDate(result.date), true), 'home');
   wireQuoteActions(result.quote);
 }
 
 async function quotePage(id) {
   const quote = await api(`/api/quotes/${encodeURIComponent(id)}`);
-  document.title = `${creator(quote)} — ${SITE_TITLE}`;
+  document.title = `${creator(quote)} - ${SITE_TITLE}`;
   app.innerHTML = shell(quoteView(quote, formatDate(quote.publishedDate)));
   wireQuoteActions(quote);
 }
 
 function archiveEntry(quote) {
-  return `<article class="archive-entry"><time datetime="${escapeHtml(quote.publishedDate)}">${escapeHtml(formatDate(quote.publishedDate))}</time><div><a class="archive-quote" href="#/quote/${encodeURIComponent(quote.id)}">“${escapeHtml(excerpt(quote.quote, 260))}”</a><p><strong>${escapeHtml(creator(quote))}</strong><cite>${escapeHtml(quote.title)}</cite>${quote.year ? escapeHtml(quote.year) : ''}</p></div><span>${escapeHtml(quote.sourceType)}</span></article>`;
+  return `<article class="archive-entry"><time datetime="${escapeHtml(quote.publishedDate)}">${escapeHtml(formatDate(quote.publishedDate))}</time><div><a class="archive-quote" href="#/quote/${encodeURIComponent(quote.id)}">“${escapeHtml(excerpt(quote.quote, 260))}”</a><p><strong>${escapeHtml(creator(quote))}</strong><cite>${escapeHtml(quote.title)}</cite>${quote.year ? `<span>${escapeHtml(quote.year)}</span>` : ''}</p></div><span>${escapeHtml(quote.sourceType)}</span></article>`;
 }
 
 async function archivePage() {
@@ -145,7 +146,7 @@ async function statsPage() {
 }
 
 function loginPage(message = '') {
-  app.innerHTML = shell(`<main id="main" class="page"><header class="page-heading"><h1>Editor</h1><p>Private access for the curator.</p></header>${message ? `<p class="notice error">${escapeHtml(message)}</p>` : ''}<form id="login" class="login-form"><label>Username<input name="username" autocomplete="username" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="solid-button" type="submit">Sign in</button></form></main>`, 'admin');
+  app.innerHTML = shell(`<main id="main" class="page login-page"><header class="page-heading"><h1>Curator sign-in</h1><p>Editing is private. Today’s quotation and the archive are public.</p><a href="#/archive">Return to the public archive</a></header>${message ? `<p class="notice error">${escapeHtml(message)}</p>` : ''}<form id="login" class="login-form"><label>Username<input name="username" autocomplete="username" value="curator" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><button class="solid-button" type="submit">Sign in</button></form></main>`, 'admin');
   document.querySelector('#login').addEventListener('submit', async (event) => {
     event.preventDefault(); const fields = new FormData(event.currentTarget);
     sessionStorage.setItem('in-circulation-auth', btoa(`${fields.get('username')}:${fields.get('password')}`));
@@ -157,7 +158,7 @@ function loginPage(message = '') {
 function adminRow(quote) {
   const unsafe = ['Needs Review','Do Not Publish'].includes(quote.publicDomainStatus);
   const canMove = quote.status === 'scheduled' && !quote.publishDate;
-  return `<div class="quote-row"><div><a href="#/admin/edit/${encodeURIComponent(quote.id)}"><strong>${escapeHtml(excerpt(quote.quote, 90))}</strong><span>${escapeHtml(quote.author)} · ${escapeHtml(quote.title)}</span></a></div><div><strong>${escapeHtml(quote.status)}</strong><span>${escapeHtml(quote.publishDate || 'Unscheduled')}</span></div><div class="${unsafe ? 'hold' : ''}"><strong>${escapeHtml(quote.publicDomainStatus)}</strong><span>${escapeHtml(quote.sourceType)}</span></div><div class="row-actions"><a href="#/admin/edit/${encodeURIComponent(quote.id)}">Edit</a><button data-action="duplicate" data-id="${escapeHtml(quote.id)}">Duplicate</button>${canMove ? `<button data-action="up" data-id="${escapeHtml(quote.id)}">↑ Up</button><button data-action="down" data-id="${escapeHtml(quote.id)}">↓ Down</button>` : ''}<button class="danger" data-action="delete" data-id="${escapeHtml(quote.id)}">Delete</button></div></div>`;
+  return `<div class="quote-row"><div><a href="#/admin/edit/${encodeURIComponent(quote.id)}"><strong>${escapeHtml(excerpt(quote.quote, 90))}</strong><span>${escapeHtml(quote.author)}, <i>${escapeHtml(quote.title)}</i></span></a></div><div><strong>${escapeHtml(quote.status)}</strong><span>${escapeHtml(quote.publishDate || 'Unscheduled')}</span></div><div class="${unsafe ? 'hold' : ''}"><strong>${escapeHtml(quote.publicDomainStatus)}</strong><span>${escapeHtml(quote.sourceType)}</span></div><div class="row-actions"><a href="#/admin/edit/${encodeURIComponent(quote.id)}">Edit</a><button data-action="duplicate" data-id="${escapeHtml(quote.id)}">Duplicate</button>${canMove ? `<button data-action="up" data-id="${escapeHtml(quote.id)}">↑ Up</button><button data-action="down" data-id="${escapeHtml(quote.id)}">↓ Down</button>` : ''}<button class="danger" data-action="delete" data-id="${escapeHtml(quote.id)}">Delete</button></div></div>`;
 }
 
 async function adminPage() {
@@ -249,7 +250,7 @@ async function settingsPage() {
 async function route() {
   window.scrollTo(0,0); document.title = SITE_TITLE;
   const path = (location.hash.slice(1) || '/').replace(/\/+$/, '') || '/';
-  app.innerHTML = '<main class="loading-state"><p>Retrieving the edition…</p><span></span><span></span></main>';
+  app.innerHTML = '<main class="loading-state"><p>Retrieving the edition…</p></main>';
   try {
     if (path === '/') return await home();
     if (path === '/archive') return await archivePage();
