@@ -2,7 +2,7 @@
 
 In Circulation is a tiny daily publication for one carefully sourced quotation about coins, currency, money, wages, debt, value, payment, and related ideas. It stores curator-entered text without rewriting it, schedules one eligible record per local calendar day, and keeps permanent archive links.
 
-The repository includes a 30-record founding pilot collection shaped by a strict editorial rule: money, payment, wages, debt, value, or currency must be necessary to the passage rather than incidental. Twenty-eight records are source-linked and rights-cleared for the queue. Two Federal Writers’ Project leads remain `Needs Review` drafts and cannot publish automatically.
+The live editorial database contains 530 records: a 30-record founding pilot and 500 exact-text draft candidates extracted from 50 public-domain books. The pilot follows a strict editorial rule: money, payment, wages, debt, value, or currency must be necessary to the passage rather than incidental. Twenty-eight pilot records are source-linked and rights-cleared for the queue. Two Federal Writers’ Project leads and all 500 mechanically selected candidates remain drafts and cannot publish automatically without an editor changing their workflow status.
 
 ## Live services
 
@@ -79,13 +79,21 @@ Never commit `.env`, credentials, or the contents of `data/`.
 
 ## Editor, import, and export
 
-The editor supports add, edit, delete, preview, duplicate, search, status and rights filters, date assignment, queue reordering, timezone configuration, CSV/JSON import, and full CSV/JSON export.
+The complete quote list is visible after signing in at <https://jens246.github.io/in-circulation/#/admin>. The public archive intentionally contains only quotations that have already circulated. The editor supports add, edit, delete, preview, duplicate, search, status and rights filters, date assignment, queue reordering, timezone configuration, CSV/JSON import, and full CSV/JSON export.
 
 Use [`site/sample-quotes.csv`](site/sample-quotes.csv) as the CSV template. Separate multiple themes or currency terms with `|`. Imports validate one row at a time: valid rows are retained and errors identify the failing row. Required fields are quotation text, author, title, source type, source URL, rights status, and workflow status.
 
 Download an export after material editorial work. Exports contain the entire collection, including drafts and internal fields.
 
 The founding collection is stored in [`seed/curated-quotes.json`](seed/curated-quotes.json) so the public research record is reviewable and the initial database can be recreated. Editing the live database does not rewrite that file; use JSON export for later production backups.
+
+The 500-record expansion is stored in [`seed/expanded-quotes.json`](seed/expanded-quotes.json). It is reproducibly derived from the bibliographic catalog in [`seed/public-domain-sources.json`](seed/public-domain-sources.json) by [`scripts/build-public-domain-corpus.mjs`](scripts/build-public-domain-corpus.mjs). To rebuild it:
+
+```bash
+npm run build:corpus
+```
+
+The script downloads Project Gutenberg plain-text editions into the ignored `work/gutenberg/` cache, selects sentences with direct money and value language, preserves their text while normalizing prose line wrapping, and assigns deterministic IDs. Every generated record is deliberately a draft with no `publishDate`; its internal note requires editorial review of literary merit, passage boundaries, citation detail, and rights before scheduling. All source works were first published by 1920, and repository presence is not treated as the sole rights basis.
 
 ## Deployment
 

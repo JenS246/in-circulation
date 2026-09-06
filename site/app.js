@@ -141,7 +141,7 @@ function tally(title, rows) {
 }
 async function statsPage() {
   const stats = await api('/api/stats');
-  app.innerHTML = shell(`<main id="main" class="page"><header class="page-heading"><h1>Index</h1><p>${stats.total} quotation records in the collection.</p></header><div class="stats-grid"><div>${tally('By century',stats.centuries)}${tally('By source type',stats.genres)}${tally('By repository',stats.repositories)}</div><div>${tally('By theme',stats.themes)}${tally('By currency term',stats.currencyTerms)}</div></div></main>`, 'stats');
+  app.innerHTML = shell(`<main id="main" class="page"><header class="page-heading"><h1>Index</h1><p>${stats.total} published edition${stats.total === 1 ? '' : 's'} in the public archive.</p></header><div class="stats-grid"><div>${tally('By century',stats.centuries)}${tally('By source type',stats.genres)}${tally('By repository',stats.repositories)}</div><div>${tally('By theme',stats.themes)}${tally('By currency term',stats.currencyTerms)}</div></div></main>`, 'stats');
 }
 
 function loginPage(message = '') {
@@ -166,16 +166,16 @@ async function adminPage() {
   try { quotes = await adminApi('/quotes'); } catch (error) { return loginPage(error.message); }
   const count = (status) => quotes.filter((quote) => quote.status === status).length;
   const upcoming = quotes.filter((quote) => quote.publishDate && quote.status === 'scheduled').length;
-  app.innerHTML = shell(`<main id="main" class="page"><header class="admin-heading"><div><h1>Editor</h1><p>Rights status remains visible at every step.</p></div><a class="solid-button" href="#/admin/new">Add quotation</a></header>
+  app.innerHTML = shell(`<main id="main" class="page"><header class="admin-heading"><div><h1>Editor</h1><p>The complete editorial collection. Rights status remains visible at every step.</p></div><a class="solid-button" href="#/admin/new">Add quotation</a></header>
     <div class="admin-summary"><p><strong>${quotes.length}</strong>Total</p><p><strong>${count('published')}</strong>Published</p><p><strong>${count('draft')}</strong>Drafts</p><p><strong>${upcoming}</strong>Upcoming</p></div>
     <nav class="admin-tools" aria-label="Editor tools"><a href="#/admin/import">Import / export</a><a href="#/admin/settings">Timezone</a><button class="link-button" data-signout>Sign out</button></nav>
-    <form class="admin-filters" id="admin-filters"><label>Search<input name="search" type="search" placeholder="Quote, author, or title"></label><label>Status<select name="status">${selectOptions(STATUSES,'','All statuses')}</select></label><label>Rights<select name="rights">${selectOptions(RIGHTS,'','All rights states')}</select></label><button class="solid-button" type="submit">Filter</button></form>
+    <form class="admin-filters" id="admin-filters"><label>Search<input name="search" type="search" placeholder="Quote, author, or title"></label><label>Status<select name="status">${selectOptions(STATUSES,'','All statuses')}</select></label><label>Rights<select name="rights">${selectOptions(RIGHTS,'','All rights states')}</select></label><button class="solid-button" type="submit">Filter</button></form><p class="result-count">Showing <span data-admin-count>${quotes.length}</span> quotation${quotes.length === 1 ? '' : 's'}</p>
     <div class="quote-table"><div class="quote-row quote-row-head"><div>Quotation</div><div>Publication</div><div>Rights</div><div>Actions</div></div><div data-admin-results>${quotes.map(adminRow).join('')}</div></div></main>`, 'admin');
   document.querySelector('[data-signout]').addEventListener('click', () => { sessionStorage.removeItem('in-circulation-auth'); loginPage(); });
   document.querySelector('#admin-filters').addEventListener('submit', async (event) => {
     event.preventDefault(); const params = new URLSearchParams(new FormData(event.currentTarget));
     [...params].forEach(([key,value]) => { if (!value) params.delete(key); });
-    const results = await adminApi(`/quotes?${params}`); document.querySelector('[data-admin-results]').innerHTML = results.map(adminRow).join('');
+    const results = await adminApi(`/quotes?${params}`); document.querySelector('[data-admin-count]').textContent = results.length; document.querySelector('[data-admin-results]').innerHTML = results.map(adminRow).join('');
   });
   document.querySelector('[data-admin-results]').addEventListener('click', async (event) => {
     const button = event.target.closest('[data-action]'); if (!button) return;

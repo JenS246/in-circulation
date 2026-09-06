@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "python3 -m http.server 4174 --directory site",
     "start:api": "node --env-file=.env backend/server.mjs",
+    "build:corpus": "node scripts/build-public-domain-corpus.mjs 500",
     "check": "node --check site/app.js && node --check backend/core.mjs && node --check backend/server.mjs",
     "test": "node --test",
     "build": "npm run check"
