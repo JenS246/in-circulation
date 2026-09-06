@@ -1,0 +1,216 @@
+{
+  "collection": "In Circulation founding pilot",
+  "editorialNote": "Exact, source-linked transcriptions. Repository presence alone was not treated as proof of rights status.",
+  "quotes": [
+    {
+      "id": "dickens-david-copperfield-income", "quote": "Annual income twenty pounds, annual expenditure nineteen nineteen and six, result happiness. Annual income twenty pounds, annual expenditure twenty pounds ought and six, result misery.",
+      "author": "Charles Dickens", "speaker": "Wilkins Micawber", "title": "David Copperfield", "year": "1850", "publicationDate": "1850", "sourceType": "Fiction",
+      "currencyTerms": ["pounds", "income", "expenditure"], "themes": ["debt", "spending", "poverty"], "context": "Micawber reduces household solvency to the narrowest possible margin.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/766/766-h/766-h.htm", "sourceCitation": "Chapter XII", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1850; Charles Dickens died in 1870. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 1
+    },
+    {
+      "id": "austen-sense-sensibility-annuity", "quote": "Certainly not; but if you observe, people always live for ever when there is an annuity to be paid them.",
+      "author": "Jane Austen", "speaker": "Fanny Dashwood", "title": "Sense and Sensibility", "year": "1811", "publicationDate": "1811", "sourceType": "Fiction",
+      "currencyTerms": ["annuity", "payment"], "themes": ["inheritance", "self-interest", "family"], "context": "Fanny argues against providing an annuity to the Dashwood women.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/161/161-h/161-h.htm", "sourceCitation": "Chapter II", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1811; Jane Austen died in 1817. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 2
+    },
+    {
+      "id": "austen-emma-narrow-income", "quote": "A single woman, with a very narrow income, must be a ridiculous, disagreeable old maid!",
+      "author": "Jane Austen", "speaker": "Emma Woodhouse", "title": "Emma", "year": "1815", "publicationDate": "1815", "sourceType": "Fiction",
+      "currencyTerms": ["income"], "themes": ["gender", "poverty", "independence"], "context": "Emma distinguishes the social position of unmarried women with and without money.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/158/158-h/158-h.htm", "sourceCitation": "Volume I, Chapter X", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1815; Jane Austen died in 1817. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 3
+    },
+    {
+      "id": "alcott-little-women-small-salary", "quote": "Margaret found a place as nursery governess and felt rich with her small salary.",
+      "author": "Louisa May Alcott", "speaker": null, "title": "Little Women", "year": "1868", "publicationDate": "1868", "sourceType": "Fiction",
+      "currencyTerms": ["salary"], "themes": ["wages", "labor", "independence", "gender"], "context": "The March sisters take paid work after the family's loss of fortune.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/514/514-h/514-h.htm", "sourceCitation": "Chapter IV, “Burdens”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1868; Louisa May Alcott died in 1888. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 4
+    },
+    {
+      "id": "eliot-silas-marner-guineas", "quote": "For joy is the best of wine, and Silas’s guineas were a golden wine of that sort.",
+      "author": "George Eliot", "speaker": null, "title": "Silas Marner", "year": "1861", "publicationDate": "1861", "sourceType": "Fiction",
+      "currencyTerms": ["guineas", "gold"], "themes": ["saving", "isolation", "desire"], "context": "Silas takes sensory pleasure in the coins accumulated from his weaving.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/550/550-h/550-h.htm", "sourceCitation": "Part I, Chapter V", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1861; George Eliot died in 1880. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 5
+    },
+    {
+      "id": "ibsen-dolls-house-borrowing", "quote": "There can be no freedom or beauty about a home life that depends on borrowing and debt.",
+      "author": "Henrik Ibsen", "speaker": "Torvald Helmer", "title": "A Doll’s House", "year": "1879", "publicationDate": "1911 English translation", "sourceType": "Play",
+      "currencyTerms": ["borrowing", "debt"], "themes": ["debt", "freedom", "marriage"], "context": "Helmer condemns debt early in a play whose plot turns on Nora's secret loan.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/2542/2542-h/2542-h.htm", "sourceCitation": "Act I; translated by R. Farquharson Sharp", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "The linked English translation was published in 1911 and is public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked translation on 2026-09-06.", "queuePosition": 6
+    },
+    {
+      "id": "shakespeare-hamlet-borrower-lender", "quote": "Neither a borrower nor a lender be:\nFor loan oft loses both itself and friend;",
+      "author": "William Shakespeare", "speaker": "Polonius", "title": "Hamlet", "year": "c. 1600", "publicationDate": "c. 1600", "sourceType": "Play",
+      "currencyTerms": ["borrower", "lender", "loan"], "themes": ["debt", "friendship", "prudence"], "context": "Polonius includes the warning in his advice to Laertes.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/1524/1524-h/1524-h.htm", "sourceCitation": "Act I, Scene III", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "William Shakespeare died in 1616; the work is public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Lineation and punctuation checked against the linked transcription on 2026-09-06.", "queuePosition": 7
+    },
+    {
+      "id": "ohenry-gift-magi-pennies", "quote": "One dollar and eighty-seven cents. That was all. And sixty cents of it was in pennies.",
+      "author": "O. Henry", "speaker": null, "title": "The Gift of the Magi", "year": "1905", "publicationDate": "1905", "sourceType": "Fiction",
+      "currencyTerms": ["dollar", "cents", "pennies"], "themes": ["poverty", "saving", "love"], "context": "Della counts the money she has saved to buy Jim a Christmas gift.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/7256/7256-h/7256-h.htm", "sourceCitation": "Opening paragraph", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1905; O. Henry died in 1910. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 8
+    },
+    {
+      "id": "wordsworth-world-getting-spending", "quote": "The world is too much with us; late and soon,\nGetting and spending, we lay waste our powers:",
+      "author": "William Wordsworth", "speaker": null, "title": "The World Is Too Much With Us", "year": "1807", "publicationDate": "1807", "sourceType": "Poetry",
+      "currencyTerms": ["spending"], "themes": ["spending", "value", "nature"], "context": "The sonnet opposes commercial absorption to attention to the natural world.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/32459/32459-h/32459-h.htm", "sourceCitation": "Lines 1–2", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1807; William Wordsworth died in 1850. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Line breaks and punctuation checked against the linked transcription on 2026-09-06.", "queuePosition": 9
+    },
+    {
+      "id": "dubois-poor-race-dollars", "quote": "To be a poor man is hard, but to be a poor race in a land of dollars is the very bottom of hardships.",
+      "author": "W. E. B. Du Bois", "speaker": null, "title": "The Souls of Black Folk", "year": "1903", "publicationDate": "1903", "sourceType": "Nonfiction",
+      "currencyTerms": ["dollars"], "themes": ["poverty", "race", "power"], "context": "Du Bois describes the economic burden imposed on Black Americans after emancipation.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/408/408-h/408-h.htm", "sourceCitation": "Chapter VI, “Of the Training of Black Men”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1903 and public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 10
+    },
+    {
+      "id": "douglass-dollar-fifty-day", "quote": "Besides, I was now getting, as I have said, a dollar and fifty cents per day.",
+      "author": "Frederick Douglass", "speaker": "Frederick Douglass", "title": "Life and Times of Frederick Douglass", "year": "1881", "publicationDate": "1881", "sourceType": "Nonfiction",
+      "currencyTerms": ["dollar", "cents", "wages"], "themes": ["labor", "wages", "freedom", "power"], "context": "Douglass describes hiring his own time while his enslaver claimed the earnings.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/71893/71893-h/71893-h.htm", "sourceCitation": "First Part, Chapter XX", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1881; Frederick Douglass died in 1895. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 11
+    },
+    {
+      "id": "sinclair-jungle-little-money", "quote": "They must not give up what was right for a little money—if they did, the money would never do them any good.",
+      "author": "Upton Sinclair", "speaker": null, "title": "The Jungle", "year": "1906", "publicationDate": "1906", "sourceType": "Fiction",
+      "currencyTerms": ["money"], "themes": ["poverty", "family", "tradition", "labor"], "context": "The family debates whether poverty should force them to abandon a proper wedding feast.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/140/140-h/140-h.htm", "sourceCitation": "Chapter VI", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1906 and public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 12
+    },
+    {
+      "id": "gilman-women-economics-want-wealth", "quote": "It is just as humanly natural for a woman as for a man to want wealth.",
+      "author": "Charlotte Perkins Gilman", "speaker": null, "title": "Women and Economics", "year": "1898", "publicationDate": "1898", "sourceType": "Nonfiction",
+      "currencyTerms": ["wealth"], "themes": ["wealth", "gender", "independence"], "context": "Gilman argues that economic desire is human rather than inherently masculine.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/57913/57913-h/57913-h.htm", "sourceCitation": "Chapter III", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1898 and public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 13
+    },
+    {
+      "id": "stowe-household-papers-without-money", "quote": "And yet how is all this to be done without money?",
+      "author": "Harriet Beecher Stowe", "speaker": "Jenny", "title": "Household Papers and Stories", "year": "1865", "publicationDate": "1865", "sourceType": "Nonfiction",
+      "currencyTerms": ["money"], "themes": ["gender", "household", "spending", "labor"], "context": "Jenny challenges expectations that women maintain appearances while practicing economy.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/31217/31217-h/31217-h.htm", "sourceCitation": "House and Home Papers IV, “The Economy of the Beautiful”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Published in the nineteenth century; Harriet Beecher Stowe died in 1896. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 14
+    },
+    {
+      "id": "gissing-odd-women-value-money", "quote": "I put a high value on money. I wish to be rich!",
+      "author": "George Gissing", "speaker": "Thomas Micklethwaite", "title": "The Odd Women", "year": "1893", "publicationDate": "1893", "sourceType": "Fiction",
+      "currencyTerms": ["money"], "themes": ["wealth", "ambition", "labor", "gender"], "context": "Micklethwaite imagines prosperity from a successful series of schoolbooks.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/4313/4313-h/4313-h.htm", "sourceCitation": "Chapter IX", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1893; George Gissing died in 1903. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 15
+    },
+    {
+      "id": "trollope-miss-mackenzie-money", "quote": "As for her money, of course he wanted her money.",
+      "author": "Anthony Trollope", "speaker": null, "title": "Miss Mackenzie", "year": "1865", "publicationDate": "1865", "sourceType": "Fiction",
+      "currencyTerms": ["money"], "themes": ["gender", "marriage", "wealth", "power"], "context": "Miss Mackenzie measures a suitor's interest against her inheritance.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/24000/24000-h/24000-h.htm", "sourceCitation": "Chapter XIV", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1865; Anthony Trollope died in 1882. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 16
+    },
+    {
+      "id": "trollope-brown-jones-credit", "quote": "Credit I take to be the belief of other people in a thing that doesn't really exist.",
+      "author": "Anthony Trollope", "speaker": "Mr. Robinson", "title": "The Struggles of Brown, Jones, and Robinson", "year": "1862", "publicationDate": "1862", "sourceType": "Fiction",
+      "currencyTerms": ["credit"], "themes": ["trust", "debt", "counterfeit"], "context": "Robinson offers a comic definition while discussing the firm's finances.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/cache/epub/27533/pg27533-images.html", "sourceCitation": "Chapter VII", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1862; Anthony Trollope died in 1882. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 17
+    },
+    {
+      "id": "stevenson-money-liberty", "quote": "The price we have to pay for money is paid in liberty.",
+      "author": "Robert Louis Stevenson", "speaker": null, "title": "Familiar Studies of Men and Books", "year": "1882", "publicationDate": "1882", "sourceType": "Nonfiction",
+      "currencyTerms": ["price", "money"], "themes": ["labor", "freedom", "value"], "context": "Stevenson reflects on Thoreau's account of the life spent acquiring things.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/cache/epub/425/pg425-images.html", "sourceCitation": "“Henry David Thoreau: His Character and Opinions”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1882; Robert Louis Stevenson died in 1894. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 18
+    },
+    {
+      "id": "franklin-credit-is-money", "quote": "Remember that credit is money.",
+      "author": "Benjamin Franklin", "speaker": null, "title": "Advice to a Young Tradesman", "year": "1748", "publicationDate": "1748", "sourceType": "Nonfiction",
+      "currencyTerms": ["credit", "money"], "themes": ["trust", "debt", "labor"], "context": "Franklin explains how punctual payment affects a tradesman's borrowing power.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/40236/40236-h/40236-h.htm", "sourceCitation": "“Advice to a Young Tradesman”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1748; Benjamin Franklin died in 1790. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 19
+    },
+    {
+      "id": "smith-wealth-nations-poor-miserable", "quote": "No society can surely be flourishing and happy, of which the far greater part of the members are poor and miserable.",
+      "author": "Adam Smith", "speaker": null, "title": "An Inquiry into the Nature and Causes of the Wealth of Nations", "year": "1776", "publicationDate": "1776", "sourceType": "Nonfiction",
+      "currencyTerms": ["wealth"], "themes": ["poverty", "labor", "wages", "justice"], "context": "Smith argues that those who sustain society should receive enough of its produce to live tolerably well.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/3300/3300-h/3300-h.htm", "sourceCitation": "Book I, Chapter VIII", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1776; Adam Smith died in 1790. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 20
+    },
+    {
+      "id": "mill-political-economy-price", "quote": "Writers have employed Price to express the value of a thing in relation to money—the quantity of money for which it will exchange.",
+      "author": "John Stuart Mill", "speaker": null, "title": "Principles of Political Economy", "year": "1848", "publicationDate": "1848", "sourceType": "Nonfiction",
+      "currencyTerms": ["price", "money"], "themes": ["value", "exchange"], "context": "Mill distinguishes exchange value from price expressed in money.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/30107/30107-h/30107-h.html", "sourceCitation": "Book III, Chapter VIII", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1848; John Stuart Mill died in 1873. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 21
+    },
+    {
+      "id": "veblen-reputable-wasteful", "quote": "In order to be reputable it must be wasteful.",
+      "author": "Thorstein Veblen", "speaker": null, "title": "The Theory of the Leisure Class", "year": "1899", "publicationDate": "1899", "sourceType": "Nonfiction",
+      "currencyTerms": ["expenditure"], "themes": ["wealth", "spending", "status", "power"], "context": "Veblen defines the logic of conspicuous expenditure.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/833/833-h/833-h.htm", "sourceCitation": "Chapter IV, “Conspicuous Consumption”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1899 and public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 22
+    },
+    {
+      "id": "ruskin-no-wealth-but-life", "quote": "There is no Wealth but Life.",
+      "author": "John Ruskin", "speaker": null, "title": "Unto This Last", "year": "1860", "publicationDate": "1860", "sourceType": "Nonfiction",
+      "currencyTerms": ["wealth"], "themes": ["value", "wealth", "life"], "context": "Ruskin closes his political-economy essays by redefining national and personal riches.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/cache/epub/36541/pg36541-images.html", "sourceCitation": "Essay IV, “Ad Valorem”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1860; John Ruskin died in 1900. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Capitalization checked against the linked transcription on 2026-09-06.", "queuePosition": 23
+    },
+    {
+      "id": "george-progress-poverty-enigma", "quote": "This association of poverty with progress is the great enigma of our times.",
+      "author": "Henry George", "speaker": null, "title": "Progress and Poverty", "year": "1879", "publicationDate": "1879", "sourceType": "Nonfiction",
+      "currencyTerms": ["poverty", "wealth"], "themes": ["poverty", "progress", "power"], "context": "George identifies the persistence of poverty amid material progress as the book's central problem.", "showContext": false,
+      "repository": "Project Gutenberg", "sourceUrl": "https://www.gutenberg.org/files/55308/55308-h/55308-h.htm", "sourceCitation": "Introductory, “The Problem”", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1879; Henry George died in 1897. Public domain in the United States.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Exact text checked against the linked transcription on 2026-09-06.", "queuePosition": 24
+    },
+    {
+      "id": "coinage-act-1792-dollar-unit", "quote": "Dollars or Units—each to be of the value of a Spanish milled dollar as the same is now current",
+      "author": "United States Congress", "speaker": null, "title": "An Act Establishing a Mint, and Regulating the Coins of the United States", "year": "1792", "publicationDate": "1792-04-02", "sourceType": "Government document",
+      "currencyTerms": ["dollars", "units", "coin"], "themes": ["value", "exchange", "standardization", "power"], "context": "The first federal coinage act defines the dollar by reference to the Spanish milled dollar then in circulation.", "showContext": false,
+      "repository": "GovInfo, United States Statutes at Large", "sourceUrl": "https://www.govinfo.gov/content/pkg/STATUTE-1/pdf/STATUTE-1-Pg246-3.pdf", "sourceCitation": "1 Stat. 246, 248; section 9", "publicDomainStatus": "U.S. Government Work",
+      "rightsNote": "Federal statute; not subject to copyright in the United States under 17 U.S.C. § 105.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Wording checked against the GovInfo scan; excerpt ends before the silver-content specification.", "queuePosition": 25
+    },
+    {
+      "id": "federal-reserve-act-note-obligation", "quote": "The said notes shall be obligations of the United States and shall be receivable by all national and member banks and Federal reserve banks",
+      "author": "United States Congress", "speaker": null, "title": "Federal Reserve Act, Section 16", "year": "1913", "publicationDate": "1913-12-23", "sourceType": "Government document",
+      "currencyTerms": ["Federal Reserve notes", "currency"], "themes": ["trust", "payment", "power", "exchange"], "context": "Section 16 establishes the legal character and receivability of Federal Reserve notes.", "showContext": false,
+      "repository": "Board of Governors of the Federal Reserve System", "sourceUrl": "https://www.federalreserve.gov/frrs/statutes/section-16-note-issues.htm", "sourceCitation": "12 U.S.C. § 411", "publicDomainStatus": "U.S. Government Work",
+      "rightsNote": "Text of a federal statute; not subject to copyright in the United States under 17 U.S.C. § 105.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Wording checked against the Federal Reserve Board transcription; excerpt ends before the list of public dues.", "queuePosition": 26
+    },
+    {
+      "id": "hine-dambrinio-dollar-day", "quote": "She says she earns a dollar a day when shrimp are big.",
+      "author": "Lewis Wickes Hine", "speaker": "Lillian Dambrinio", "title": "Lillian Dambrinio, an eleven-year-old shrimp picker in Peerless Oyster Co.", "year": "1911", "publicationDate": "1911-03", "sourceType": "Other",
+      "currencyTerms": ["dollar", "wages"], "themes": ["labor", "wages", "poverty", "childhood"], "context": "A caption card records the pay and school attendance of an eleven-year-old shrimp picker.", "showContext": false,
+      "repository": "Library of Congress, National Child Labor Committee Collection", "sourceUrl": "https://www.loc.gov/item/2018676349/", "sourceCitation": "Hine no. 2044; LOT 7476, no. 2044; LC-DIG-nclc-00903", "publicDomainStatus": "Permission / Open License",
+      "rightsNote": "Library of Congress Rights Advisory: “No known restrictions on publication.” Users remain responsible for rights assessment.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Caption and rights advisory checked on the item page on 2026-09-06.", "queuePosition": 27
+    },
+    {
+      "id": "lange-turpentine-dollar-day", "quote": "Father's wages one dollar a day. This is the standard of living the turpentine trees support.",
+      "author": "Dorothea Lange", "speaker": null, "title": "Turpentine worker's family near Cordele, Alabama", "year": "1936", "publicationDate": "1936-07", "sourceType": "Government document",
+      "currencyTerms": ["wages", "dollar"], "themes": ["labor", "wages", "poverty", "family"], "context": "Lange's Farm Security Administration caption joins a daily wage to a family's living conditions.", "showContext": false,
+      "repository": "Library of Congress, FSA/OWI Collection", "sourceUrl": "https://www.loc.gov/pictures/item/2017763012/", "sourceCitation": "LC-DIG-fsa-8b38218", "publicDomainStatus": "U.S. Government Work",
+      "rightsNote": "Created by Dorothea Lange for the federal Farm Security Administration; U.S. government work.", "publishDate": null, "status": "scheduled", "reusable": false, "notes": "Caption checked against the Library of Congress catalog record on 2026-09-06.", "queuePosition": 28
+    },
+    {
+      "id": "fwp-bartoletti-insurance-stretch", "quote": "I have a little insurance money. But there are four children. I got to make that money stretch.",
+      "author": "Mari Tomasi", "speaker": "Melicenda Bartoletti", "title": "Italian Feed", "year": "1940", "publicationDate": "1940", "sourceType": "Oral history",
+      "currencyTerms": ["insurance money"], "themes": ["labor", "family", "poverty", "independence", "gender"], "context": "Bartoletti describes turning domestic cooking into paid work after her husband's death.", "showContext": false,
+      "repository": "Library of Congress, Federal Writers’ Project Life Histories", "sourceUrl": "https://tile.loc.gov/storage-services/service/mss/wpalh/wpalh-38052407/wpalh-38052407.pdf", "sourceCitation": "“Italian Feed,” typescript page 4; wpalh-38052407", "publicDomainStatus": "Needs Review",
+      "rightsNote": "Federal Writers’ Project typescript; interviewee speech, transcription status, and third-party rights require review.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Keep as draft until rights and spelling are checked against the page image.", "queuePosition": 29
+    },
+    {
+      "id": "fwp-paca-better-money", "quote": "You can make better money, too, but the rate has to be topped, and it's very, very fast work.",
+      "author": "Federal Writers’ Project", "speaker": "Marge Paca", "title": "Interview with Marge Paca", "year": "c. 1936–1940", "publicationDate": null, "sourceType": "Oral history",
+      "currencyTerms": ["money", "piece rate"], "themes": ["labor", "wages", "gender"], "context": "Paca describes piece-rate labor and the speed required to earn more.", "showContext": false,
+      "repository": "Library of Congress, Federal Writers’ Project", "sourceUrl": "https://www.loc.gov/classroom-materials/oral-history-and-social-history", "sourceCitation": "Library of Congress classroom excerpt, “Marge Paca”", "publicDomainStatus": "Needs Review",
+      "rightsNote": "Locate the underlying manuscript and confirm interviewee and transcription rights before publication.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Collection lead only; do not publish until the manuscript record is identified and checked.", "queuePosition": 30
+    }
+  ]
+}

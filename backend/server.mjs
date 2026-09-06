@@ -1,5 +1,5 @@
 import { createHash, randomUUID, timingSafeEqual } from 'node:crypto';
-import { mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { DatabaseSync } from 'node:sqlite';
 import { dirname, join } from 'node:path';
@@ -82,10 +82,30 @@ const exportHeaders = [
 ];
 const failedLogins = new Map();
 
-seedPlaceholders();
+seedInitialCollection();
 
-function seedPlaceholders() {
+function seedInitialCollection() {
   if (database.prepare('SELECT COUNT(*) AS count FROM quotes').get().count) return;
+  const curatedCollection = join(projectRoot, 'seed', 'curated-quotes.json');
+  if (existsSync(curatedCollection)) {
+    try {
+      const parsed = JSON.parse(readFileSync(curatedCollection, 'utf8'));
+      const records = Array.isArray(parsed) ? parsed : parsed.quotes;
+      if (!Array.isArray(records) || !records.length) throw new Error('Curated seed must contain quote records.');
+      database.exec('BEGIN IMMEDIATE');
+      try {
+        records.forEach((record) => saveQuote(record));
+        database.exec('COMMIT');
+      } catch (error) {
+        database.exec('ROLLBACK');
+        throw error;
+      }
+      console.log(`Seeded ${records.length} curated quotations.`);
+      return;
+    } catch (error) {
+      console.error(`Could not load curated seed: ${error.message}`);
+    }
+  }
   const insert = database.prepare(`INSERT INTO quotes (
     id, quote, author, title, source_type, currency_terms, themes, repository,
     source_url, public_domain_status, rights_note, status, reusable,
