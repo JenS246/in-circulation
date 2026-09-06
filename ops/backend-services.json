@@ -1,0 +1,8 @@
+{
+  "name": "in-circulation-api",
+  "project": "/config/projects/in-circulation",
+  "port": 8792,
+  "command": "node --env-file=.env backend/server.mjs",
+  "cwd": "/config/projects/in-circulation",
+  "public_url": "https://circulation.150-136-117-187.sslip.io"
+}

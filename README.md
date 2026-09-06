@@ -1,111 +1,128 @@
 # In Circulation
 
-In Circulation is a tiny daily publication for one carefully sourced quotation about coins, currency, money, wages, debt, value, payment, and related ideas. The quotation is the publication. The application stores curator-entered text without rewriting it, schedules one eligible record per local calendar day, keeps permanent archive links, and makes the complete collection portable.
+In Circulation is a tiny daily publication for one carefully sourced quotation about coins, currency, money, wages, debt, value, payment, and related ideas. It stores curator-entered text without rewriting it, schedules one eligible record per local calendar day, and keeps permanent archive links.
 
-The included records are obvious editorial placeholders. They are not presented as historical quotations. Replace them with curator-supplied, rights-reviewed sources before launch.
+The ten included records are obvious editorial placeholders, not historical quotations. Replace them with curator-supplied, rights-reviewed sources before launch.
 
-Hosted Site: <https://in-circulation.dschnei1122.chatgpt.site>
+## Live services
 
-## Why this stack
+- Public publication: <https://jens246.github.io/in-circulation/>
+- Private editor: <https://jens246.github.io/in-circulation/#/admin>
+- API health: <https://circulation.150-136-117-187.sslip.io/api/health>
+- Source and issue tracker: <https://github.com/JenS246/in-circulation>
 
-The site uses Vinext with React Server Components, Cloudflare D1 (SQLite), and native CSS. D1 provides durable records, filtering, and inexpensive backups without a separate database service. ChatGPT sign-in protects the editor, while server-side authorization can restrict it to configured curator email addresses. There is no AI quote generation and no AI text processing.
+## Architecture
 
-## What it does
+The frontend is dependency-free HTML, CSS, and JavaScript hosted by GitHub Pages. Hash routes make permanent pages work beneath GitHub's `/in-circulation/` project path without a custom 404 layer. A single Node.js service on the VM provides the editor, daily selection, imports, exports, and a local SQLite database. Caddy supplies HTTPS and PM2 restarts the API after failures or reboots.
 
-- Publishes a quote assigned to today's date in the configured timezone.
-- Falls back to the next eligible, unscheduled quote when today has no assignment.
-- Records one selected quote per calendar date so refreshes cannot change the edition.
-- Never automatically publishes records marked `Needs Review` or `Do Not Publish`.
-- Never automatically repeats a record unless `reusable` is enabled.
-- Preserves quote text, punctuation, capitalization, spelling, and line breaks exactly as submitted.
-- Keeps `context` private unless `showContext` is explicitly enabled.
-- Provides a searchable, filterable, reverse chronological archive and permanent quote URLs.
-- Supports add, edit, delete, preview, duplicate, scheduling, status changes, and queue reordering.
-- Imports CSV or JSON row by row, preserving successful rows while reporting validation errors.
-- Exports every public and private database field to CSV or JSON.
-- Includes local browser favorites, Web Share support, exact-text copy, and collection statistics.
+This is intentionally smaller than a full-stack framework: the public files are cheap and durable, the only stateful component is one backed-up SQLite file, and the repository contains no secrets or production data.
+
+## Publication behavior
+
+For the date in the configured IANA timezone (default `America/New_York`), the API:
+
+1. Returns the quotation already recorded for that date.
+2. Otherwise selects an eligible record whose `publishDate` matches today.
+3. Otherwise selects the first eligible scheduled record with no date, using `queuePosition`.
+4. Excludes `Needs Review` and `Do Not Publish` records.
+5. Excludes previously published records unless `reusable` is enabled.
+6. Records the result in `publication_log` so refreshes cannot change the edition.
+
+Eligible rights values are `Verified Public Domain`, `U.S. Government Work`, and `Permission / Open License`. These are curator assertions; the application never infers rights from a repository.
 
 ## Data model
 
-The `quotes` table contains:
+Each quotation includes `id`, `quote`, `author`, `speaker`, `title`, `year`, `publicationDate`, `sourceType`, `currencyTerms`, `themes`, `context`, `showContext`, `repository`, `sourceUrl`, `sourceCitation`, `publicDomainStatus`, `rightsNote`, `publishDate`, `status`, `reusable`, `notes`, `queuePosition`, and timestamps.
 
-`id`, `quote`, `author`, `speaker`, `title`, `year`, `publicationDate`, `sourceType`, `currencyTerms`, `themes`, `context`, `showContext`, `repository`, `sourceUrl`, `sourceCitation`, `publicDomainStatus`, `rightsNote`, `publishDate`, `status`, `reusable`, `notes`, `queuePosition`, `createdAt`, and `updatedAt`.
+Calendar dates use `YYYY-MM-DD`. Terms and themes are JSON arrays in SQLite and pipe-separated in CSV. `context` and `notes` remain private unless `showContext` is explicitly enabled. The quotation field is stored and rendered exactly as submitted, including spelling, punctuation, and line breaks.
 
-`currencyTerms` and `themes` are stored as JSON arrays. Dates use ISO `YYYY-MM-DD` when they represent a calendar date. Timestamps use UTC ISO 8601 strings. `publication_log` fixes the chosen quote for each day. `site_config` stores the IANA timezone, defaulting to `America/New_York`.
+## Local development
 
-## Publication rules
-
-For the current local date, the server:
-
-1. Returns the quote already recorded for that date, if it is still rights-eligible.
-2. Otherwise selects an eligible scheduled or published record whose `publishDate` matches the date.
-3. Otherwise selects the first eligible record with `status=scheduled` and no `publishDate`, using `queuePosition`.
-4. Excludes every `Needs Review` and `Do Not Publish` record.
-5. Excludes previously published records unless `reusable=true`.
-6. Records the result in `publication_log`; a non-reusable fallback becomes `published` and receives that day's `publishDate`.
-
-The eligible rights values are `Verified Public Domain`, `U.S. Government Work`, and `Permission / Open License`. These labels are curator assertions, not automated legal conclusions.
-
-## Local setup
-
-Requirements: Node.js 22.13 or newer and npm.
+Requirements: Node.js 22.13 or newer, npm, and Python 3 for the small static-file development server.
 
 ```bash
-npm install
-cp .env.example .env.local
-npm run db:generate
+npm ci
+cp .env.example .env
+# Replace ADMIN_PASSWORD in .env.
+npm run start:api
+```
+
+In another terminal:
+
+```bash
 npm run dev
 ```
 
-Open the local URL printed by Vinext. The Sites development environment supplies a test signed-in user. The local D1 database and Wrangler state stay inside the project under `.wrangler/`.
+Open <http://127.0.0.1:4174>. The frontend uses the public HTTPS API by default, matching production. To work against a local API, temporarily change `API_BASE` at the top of `site/app.js` and do not commit that change.
 
-The application creates its tables and ten placeholder records on first use. Drizzle migrations in `drizzle/` are also included for hosted database setup.
+Run verification with:
+
+```bash
+npm test
+npm run build
+```
+
+The database and ten placeholder records are created automatically on first API start.
 
 ## Environment variables
 
-- `ADMIN_EMAILS`: comma-separated curator email allowlist. Set this for every public deployment. If omitted, any signed-in ChatGPT user can open the editor.
-- `NEXT_PUBLIC_SITE_URL`: canonical HTTPS origin used for absolute Open Graph image URLs.
+Copy `.env.example` to the ignored `.env` file.
 
-Do not commit `.env`, `.env.local`, passwords, keys, or tokens.
+- `PORT`: API port; production uses `8792`.
+- `ADMIN_USERNAME`: editor username; production defaults to `curator`.
+- `ADMIN_PASSWORD`: required long random password.
+- `FRONTEND_URL`: canonical GitHub Pages URL, including its trailing slash.
+- `CORS_ORIGINS`: comma-separated browser origins allowed to call the API.
+- `DATA_DIR`: optional SQLite directory override.
 
-## Adding quotations
+Never commit `.env`, credentials, or the contents of `data/`.
 
-Open `/admin`, choose **Add quote**, paste the exact quotation and original source URL, then enter attribution and rights research. New records default to `draft` and `Needs Review`. To place a record in the automatic queue, change it to `scheduled`; optionally assign a `publishDate` in `YYYY-MM-DD`.
+## Editor, import, and export
 
-For poetry and plays, paste line and stanza breaks directly into the quotation field. The editor uses a multiline control and the public page uses whitespace-preserving rendering.
+The editor supports add, edit, delete, preview, duplicate, search, status and rights filters, date assignment, queue reordering, timezone configuration, CSV/JSON import, and full CSV/JSON export.
 
-## Import and export
+Use [`site/sample-quotes.csv`](site/sample-quotes.csv) as the CSV template. Separate multiple themes or currency terms with `|`. Imports validate one row at a time: valid rows are retained and errors identify the failing row. Required fields are quotation text, author, title, source type, source URL, rights status, and workflow status.
 
-Open `/admin/import`. Import accepts:
-
-- CSV using the columns in [`public/sample-quotes.csv`](public/sample-quotes.csv). Use `|` between multiple currency terms or themes.
-- JSON as an array of quote objects or an object with a `quotes` array.
-
-Required import fields are `quote`, `author`, `title`, `sourceType`, `sourceUrl`, `publicDomainStatus`, and a valid workflow `status`. Invalid rows are reported and valid rows remain imported.
-
-CSV and JSON exports include drafts, internal notes, context, rights fields, schedule state, and queue positions. Save exports regularly as portable backups.
+Download an export after material editorial work. Exports contain the entire collection, including drafts and internal fields.
 
 ## Deployment
 
-The project is configured for OpenAI Sites with the logical D1 binding `DB` in `.openai/hosting.json`.
+### Frontend
 
-1. Build with `npm run build`.
-2. Save and deploy through Sites so the D1 migration is applied.
-3. Set `ADMIN_EMAILS` and `NEXT_PUBLIC_SITE_URL` as hosted environment variables.
-4. Make the public reading site publicly accessible, while `/admin` continues to require ChatGPT sign-in and the email allowlist.
-5. Verify the home page, one permanent quote page, `/archive`, and an authorized editor session.
+Pushes to `main` run [`.github/workflows/pages.yml`](.github/workflows/pages.yml), validate the project, and publish `site/` to GitHub Pages. The repository must remain public and Pages must use **GitHub Actions** as its source.
 
-The generated deployment URL appears in the Sites project after publishing. A custom domain can be attached later without changing the source model.
+### Backend
 
-## Accessibility and visual system
+Production runs from `/config/projects/in-circulation`:
 
-Pages use semantic headings, figures, blockquotes, time elements, labels, and navigation landmarks. Keyboard focus is highly visible. Controls meet practical contrast targets in both system light and dark modes. The layout collapses to one column on phones, retains exact quote line breaks, and disables nonessential transitions when reduced motion is requested.
+```bash
+pm2 startOrReload ecosystem.config.cjs
+pm2 save
+```
 
-The visual direction is an independent-press broadside: Libre Baskerville for the quotation, Source Sans 3 for interface text, IBM Plex Mono for archival metadata, cool gray paper, charcoal ink, one forest accent, square controls, and rules instead of cards or shadows.
+The service registry entry is mirrored in [`ops/backend-services.json`](ops/backend-services.json). The host Caddy block is in [`ops/Caddyfile.host`](ops/Caddyfile.host) and proxies the HTTPS hostname to `webtop:8792`.
 
-## Important safeguards
+After deployment, verify both endpoints:
 
-- Repositories do not determine copyright status. A Project Gutenberg, Library of Congress, NPS, Internet Archive, or HathiTrust link still requires a curator-entered rights decision.
-- Do not mark a record verified without completing the relevant rights research.
-- The application never rewrites or modernizes quote text.
-- Changing a published record changes its permanent page. Treat post-publication edits as corrections and document them in `notes`.
+```bash
+curl -fsS https://circulation.150-136-117-187.sslip.io/api/health
+curl -I https://jens246.github.io/in-circulation/
+```
+
+## Backups and recovery
+
+Source code is backed up in the public GitHub repository. Editorial data is deliberately not committed because it includes drafts and private notes.
+
+Create a consistent local SQLite backup while the API is running:
+
+```bash
+sqlite3 data/in-circulation.sqlite3 ".backup 'in-circulation-backup.sqlite3'"
+```
+
+Also download JSON or CSV from the editor after major changes, then store it somewhere private. To restore, stop the PM2 service, retain a copy of the current database, replace `data/in-circulation.sqlite3` with the backup, restart PM2, and verify `/api/health` plus today's edition.
+
+## Accessibility and safeguards
+
+The site uses semantic figures, blockquotes, time elements, labels, headings, and navigation; visible keyboard focus; responsive type; strong contrast; and reduced-motion support. The visual system uses typography, whitespace, and rules instead of dashboard cards or decorative animation.
+
+The API uses HTTPS, restricts cross-origin browser calls, requires HTTP Basic authentication for every editor endpoint, rate-limits repeated failed sign-ins, and never returns internal notes through public quote routes. Basic authentication is appropriate here only because Caddy enforces HTTPS; rotate the editor password by changing `.env` and reloading PM2.
