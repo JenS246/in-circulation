@@ -100,12 +100,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .action-message { min-width: 5rem; color: var(--accent); }
 
 .current-channel { grid-column: 2; grid-row: 1 / 4; min-height: 68vh; display: flex; align-items: stretch; justify-content: flex-end; gap: clamp(.3rem, .6vw, .75rem); overflow: hidden; }
-.current-channel span { display: block; width: clamp(.65rem, 1.4vw, 1.6rem); transform-origin: bottom; --tide-rise: -.7rem; --tide-fall: .45rem; --tide-duration: 13s; --tide-delay: -4s; }
+.current-channel span { display: block; width: clamp(.65rem, 1.4vw, 1.6rem); transform-origin: bottom; --tide-rise: -1.5rem; --tide-fall: .9rem; --tide-duration: 12s; --tide-delay: -4s; }
 .current-channel span:nth-child(1) { height: 100%; align-self: end; background: var(--accent); }
-.current-channel span:nth-child(2) { height: 82%; align-self: end; background: var(--flare); --tide-rise: -.35rem; --tide-fall: .8rem; --tide-duration: 11s; --tide-delay: -8s; }
-.current-channel span:nth-child(3) { height: 61%; align-self: end; background: var(--accent); opacity: .65; --tide-rise: -.9rem; --tide-fall: .25rem; --tide-duration: 15s; --tide-delay: -2s; }
-.current-channel span:nth-child(4) { height: 38%; align-self: end; background: var(--flare); opacity: .38; --tide-rise: -.25rem; --tide-fall: 1rem; --tide-duration: 12s; --tide-delay: -10s; }
-.current-channel span:nth-child(5) { height: 18%; align-self: end; background: var(--accent); opacity: .14; --tide-rise: -1rem; --tide-fall: .3rem; --tide-duration: 9s; --tide-delay: -5s; }
+.current-channel span:nth-child(2) { height: 82%; align-self: end; background: var(--flare); --tide-rise: -.7rem; --tide-fall: 1.8rem; --tide-duration: 9.5s; --tide-delay: -8s; }
+.current-channel span:nth-child(3) { height: 61%; align-self: end; background: var(--accent); opacity: .65; --tide-rise: -2rem; --tide-fall: .6rem; --tide-duration: 13s; --tide-delay: -2s; }
+.current-channel span:nth-child(4) { height: 38%; align-self: end; background: var(--flare); opacity: .38; --tide-rise: -.5rem; --tide-fall: 2.2rem; --tide-duration: 10.5s; --tide-delay: -10s; }
+.current-channel span:nth-child(5) { height: 18%; align-self: end; background: var(--accent); opacity: .14; --tide-rise: -2.2rem; --tide-fall: .8rem; --tide-duration: 8s; --tide-delay: -5s; }
 
 @media (prefers-reduced-motion: no-preference) {
   .quote-group {
