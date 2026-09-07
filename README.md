@@ -87,6 +87,8 @@ Download an export after material editorial work. Exports contain the entire col
 
 The founding collection is stored in [`seed/curated-quotes.json`](seed/curated-quotes.json) so the public research record is reviewable and the initial database can be recreated. Editing the live database does not rewrite that file; use JSON export for later production backups.
 
+The hand-curated poetry, song, and film supplement is stored in [`seed/curated-poems-songs-films.json`](seed/curated-poems-songs-films.json). Its song entries cover only the original published lyrics and compositions, and its film entries cover only the original films; later recordings, arrangements, restorations, and added scores may have separate rights. These records are intentionally imported as unscheduled drafts for a final source check before publication.
+
 The 500-record expansion is stored in [`seed/expanded-quotes.json`](seed/expanded-quotes.json). It is reproducibly derived from the bibliographic catalog in [`seed/public-domain-sources.json`](seed/public-domain-sources.json) by [`scripts/build-public-domain-corpus.mjs`](scripts/build-public-domain-corpus.mjs). To rebuild it:
 
 ```bash

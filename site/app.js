@@ -1,6 +1,6 @@
 const API_BASE = 'https://circulation.150-136-117-187.sslip.io';
 const SITE_TITLE = 'In Circulation';
-const SOURCE_TYPES = ['Fiction','Poetry','Play','Nonfiction','Letter','Diary','Oral history','Court opinion','Government document','Newspaper','Song','Other'];
+const SOURCE_TYPES = ['Fiction','Poetry','Play','Nonfiction','Letter','Diary','Oral history','Court opinion','Government document','Newspaper','Song','Film','Other'];
 const RIGHTS = ['Verified Public Domain','U.S. Government Work','Permission / Open License','Needs Review','Do Not Publish'];
 const STATUSES = ['draft','scheduled','published'];
 const app = document.querySelector('#app');

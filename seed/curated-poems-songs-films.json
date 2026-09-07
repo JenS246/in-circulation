@@ -1,0 +1,130 @@
+{
+  "collection": "In Circulation: poems, songs, and films",
+  "editorialNote": "A source-linked public-domain collection. Song records concern the original published words and music, not later recordings or arrangements. Film records concern the original film, not later restorations, scores, or editions. Every item enters the live database as a draft for final editorial review.",
+  "quotes": [
+    {
+      "id": "davies-money-friends",
+      "quote": "When I had money, money, O!\nMy many friends proved all untrue;\nBut now I have no money, O!\nMy friends are real, though very few.",
+      "author": "William H. Davies", "speaker": null, "title": "Money", "year": "1911", "publicationDate": "1911", "sourceType": "Poetry",
+      "currencyTerms": ["money"], "themes": ["wealth", "poverty", "friendship", "trust"], "context": "The speaker discovers that losing money clarifies which friendships are real.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/The_Collected_Poems_of_William_H._Davies/Money", "sourceCitation": "Stanza 2", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1911; public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, spelling, and punctuation checked against the linked transcription on 2026-09-07.", "queuePosition": 1001
+    },
+    {
+      "id": "burns-rank-guinea-stamp",
+      "quote": "Is there, for honest poverty,\nThat hangs his head, and a' that;\nThe coward slave we pass him by,\nWe dare be poor for a' that.\nFor a' that, and a' that,\nOur toils obscure, and a' that;\nThe rank is but the guinea's stamp,\nThe man's the gowd for a' that.",
+      "author": "Robert Burns", "speaker": null, "title": "For a’ that and a’ that", "year": "1795", "publicationDate": "1795", "sourceType": "Poetry",
+      "currencyTerms": ["guinea", "stamp"], "themes": ["poverty", "value", "labor", "dignity"], "context": "Burns separates human worth from rank and the coinage that certifies it.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/For_a%27_that_and_a%27_that_%281818%29/For_a%27_that_and_a%27_that", "sourceCitation": "Stanza 1, 1818 printed text", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Written in 1795; Robert Burns died in 1796. Public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Scots spelling, apostrophes, and line breaks checked against the linked transcription on 2026-09-07.", "queuePosition": 1002
+    },
+    {
+      "id": "hood-song-shirt-wages",
+      "quote": "Work—work—work!\nMy labor never flags;\nAnd what are its wages? A bed of straw,\nA crust of bread—and rags.",
+      "author": "Thomas Hood", "speaker": "The seamstress", "title": "The Song of the Shirt", "year": "1843", "publicationDate": "1843-12", "sourceType": "Poetry",
+      "currencyTerms": ["wages"], "themes": ["labor", "wages", "poverty", "gender"], "context": "The poem speaks in the voice of an exhausted, impoverished seamstress.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/The_Song_of_the_Shirt", "sourceCitation": "Stanza 6", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1843; Thomas Hood died in 1845. Public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, em dashes, and punctuation checked against the linked transcription on 2026-09-07.", "queuePosition": 1003
+    },
+    {
+      "id": "rossetti-goblin-market-coin",
+      "quote": "Good folk, I have no coin;\nTo take were to purloin:\nI have no copper in my purse,\nI have no silver either,\nAnd all my gold is on the furze\nThat shakes in windy weather\nAbove the rusty heather.",
+      "author": "Christina Rossetti", "speaker": "Laura", "title": "Goblin Market", "year": "1862", "publicationDate": "1862", "sourceType": "Poetry",
+      "currencyTerms": ["coin", "copper", "silver", "gold", "purse"], "themes": ["exchange", "desire", "gender", "value"], "context": "Laura tells the goblin merchants she has no money before they propose another form of payment.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/Goblin_Market_%28Rackham%29", "sourceCitation": "Laura’s reply to the goblin merchants", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1862; Christina Rossetti died in 1894. Public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks and punctuation checked against the linked 1913 edition on 2026-09-07.", "queuePosition": 1004
+    },
+    {
+      "id": "robinson-richard-cory-bread",
+      "quote": "And he was rich,—yes, richer than a king,—\nAnd admirably schooled in every grace:\nIn fine, we thought that he was everything\nTo make us wish that we were in his place.\n\nSo on we worked, and waited for the light,\nAnd went without the meat, and cursed the bread;\nAnd Richard Cory, one calm summer night,\nWent home and put a bullet through his head.",
+      "author": "Edwin Arlington Robinson", "speaker": null, "title": "Richard Cory", "year": "1897", "publicationDate": "1897", "sourceType": "Poetry",
+      "currencyTerms": ["rich"], "themes": ["wealth", "poverty", "envy", "death", "labor"], "context": "The townspeople contrast Cory’s apparent wealth with their own deprivation, then confront what appearances concealed.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/The_Children_of_the_Night_%281921%29/Richard_Cory", "sourceCitation": "Stanzas 3–4", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1897; public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, punctuation, and the 1921 printed wording checked against the linked transcription on 2026-09-07.", "queuePosition": 1005
+    },
+    {
+      "id": "oppenheim-bread-roses",
+      "quote": "Our lives shall not be sweated from birth until life closes—\nHearts starve as well as bodies; Give us Bread, but give us Roses!",
+      "author": "James Oppenheim", "speaker": null, "title": "Bread and Roses", "year": "1911", "publicationDate": "1911", "sourceType": "Poetry",
+      "currencyTerms": ["bread"], "themes": ["labor", "wages", "gender", "dignity", "value"], "context": "The poem insists that labor deserves beauty and dignity as well as subsistence.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/Poems_for_Workers_%28Gomez_1925%29/Bread_and_Roses", "sourceCitation": "Stanza 2, lines 3–4", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1911; public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Capitalization, line breaks, semicolon, and punctuation checked against the linked 1925 printing on 2026-09-07.", "queuePosition": 1006
+    },
+    {
+      "id": "shelley-men-england-wealth",
+      "quote": "The seed ye sow, another reaps;\nThe wealth ye find, another keeps;\nThe robes ye weave, another wears;\nThe arms ye forge, another bears.",
+      "author": "Percy Bysshe Shelley", "speaker": null, "title": "Song to the Men of England", "year": "1819", "publicationDate": "1839", "sourceType": "Poetry",
+      "currencyTerms": ["wealth"], "themes": ["labor", "wealth", "power", "inequality"], "context": "Shelley sets workers’ production against others’ ownership of its results.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/The_Complete_Poetical_Works_of_Percy_Bysshe_Shelley_%28ed._Hutchinson%2C_1914%29/Song_to_the_Men_of_England", "sourceCitation": "Stanza 5", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Written in 1819 and first published in 1839; Percy Bysshe Shelley died in 1822. Public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks and punctuation checked against the linked 1914 edition on 2026-09-07.", "queuePosition": 1007
+    },
+    {
+      "id": "markham-man-hoe-burden",
+      "quote": "Bowed by the weight of centuries he leans\nUpon his hoe, and gazes on the ground;\nThe emptiness of ages in his face,\nAnd on his back the burden of the world.",
+      "author": "Edwin Markham", "speaker": null, "title": "The Man with the Hoe", "year": "1899", "publicationDate": "1899", "sourceType": "Poetry",
+      "currencyTerms": ["labor"], "themes": ["labor", "poverty", "power", "dignity"], "context": "Markham’s poem responds to Jean-François Millet’s painting of a field laborer.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/The_Man_with_the_Hoe", "sourceCitation": "Opening lines", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1899; public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks and punctuation checked against a linked 1900 printing on 2026-09-07.", "queuePosition": 1008
+    },
+    {
+      "id": "dickinson-publication-auction",
+      "quote": "Publication is the auction\nOf the mind of man,\nPoverty be justifying\nFor so foul a thing.",
+      "author": "Emily Dickinson", "speaker": null, "title": "Publication is the auction", "year": "c. 1863", "publicationDate": "1929", "sourceType": "Poetry",
+      "currencyTerms": ["auction", "price"], "themes": ["value", "poverty", "art", "power"], "context": "Dickinson rejects the reduction of thought and spirit to a market price.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/Publication_is_the_auction", "sourceCitation": "Stanza 1, Further Poems of Emily Dickinson (1929)", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1929; public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "This record preserves the wording and capitalization of the linked 1929 printing, not a later manuscript edition. Checked 2026-09-07.", "queuePosition": 1009
+    },
+    {
+      "id": "kipling-copybook-money-buy",
+      "quote": "In the Carboniferous Epoch we were promised abundance for all,\nBy robbing selective Peter to pay for collective Paul;\nBut, though we had plenty of money, there was nothing our money could buy,\nAnd the Gods of the Copybook Headings said: \"If you don't work you die.\"",
+      "author": "Rudyard Kipling", "speaker": null, "title": "The Gods of the Copybook Headings", "year": "1919", "publicationDate": "1919", "sourceType": "Poetry",
+      "currencyTerms": ["pay", "money", "buy"], "themes": ["exchange", "labor", "power", "scarcity"], "context": "Kipling contrasts political promises of abundance with material scarcity.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/The_Gods_of_the_Copybook_Headings", "sourceCitation": "Stanza beginning ‘In the Carboniferous Epoch’", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "First published in 1919; public domain in the United States.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, wording, and quotation marks checked against the linked transcription on 2026-09-07.", "queuePosition": 1010
+    },
+    {
+      "id": "foster-hard-times-poor",
+      "quote": "Let us pause in life's pleasures and count its many tears,\nWhile we all sup sorrow with the poor;\nThere's a song that will linger forever in our ears;\nOh! Hard times, come again no more.",
+      "author": "Stephen Collins Foster", "speaker": null, "title": "Hard Times Come Again No More", "year": "1854", "publicationDate": "1854", "sourceType": "Song",
+      "currencyTerms": ["hard times"], "themes": ["poverty", "compassion", "hardship"], "context": "Foster asks comfortable listeners to attend to the suffering around them.", "showContext": false,
+      "repository": "Library of Congress, Music Division", "sourceUrl": "https://www.loc.gov/resource/music.mussm2-sm1854-760350/?st=gallery", "sourceCitation": "Verse 1; Firth, Pond & Co. sheet music, 1854", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Published in 1854; public domain in the United States. This record covers the original composition and lyrics, not a later arrangement or recording.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Wording and lineation checked against the linked Library of Congress sheet-music scan on 2026-09-07.", "queuePosition": 1011
+    },
+    {
+      "id": "hill-preacher-slave-pie-sky",
+      "quote": "You will eat, bye and bye,\nIn that glorious land above the sky;\nWork and pray, live on hay,\nYou'll get pie in the sky when you die.",
+      "author": "Joe Hill", "speaker": null, "title": "The Preacher and the Slave", "year": "1911", "publicationDate": "1911", "sourceType": "Song",
+      "currencyTerms": ["work", "coin", "money"], "themes": ["labor", "poverty", "power", "religion"], "context": "Hill satirizes promises of future reward offered in place of food and justice in the present.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/Songs_of_the_Workers_%2815th_edition%29/The_Preacher_and_the_Slave", "sourceCitation": "Chorus, Songs of the Workers, 15th edition (1919)", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Published before 1931; public domain in the United States. This record covers the published lyrics, not a later recording.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, spelling, and punctuation checked against the linked 1919 songbook transcription on 2026-09-07.", "queuePosition": 1012
+    },
+    {
+      "id": "chaplin-solidarity-cities-trade",
+      "quote": "It is we who plowed the prairies; built the cities where they trade.\nDug the mines and built the workshops; endless miles of railroad laid.\nNow we stand, outcast and starving, 'mid the wonders we have made;\nFor the Union makes us strong.",
+      "author": "Ralph H. Chaplin", "speaker": null, "title": "Solidarity Forever!", "year": "1915", "publicationDate": "1915", "sourceType": "Song",
+      "currencyTerms": ["trade"], "themes": ["labor", "poverty", "solidarity", "power"], "context": "The verse contrasts workers’ creation of material wealth with their exclusion from it.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/Songs_of_the_workers_%2815th_edition%29/Solidarity_Forever%21", "sourceCitation": "Verse 3, Songs of the Workers, 15th edition (1919)", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Published before 1931; public domain in the United States. This record covers the published lyrics, not a later recording or arrangement.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, spelling, capitalization, and punctuation checked against the linked 1919 songbook transcription on 2026-09-07.", "queuePosition": 1013
+    },
+    {
+      "id": "unknown-fed-thousand-years",
+      "quote": "We have fed you all, for a thousand years\nAnd you hail us still unfed,\nThough there's never a dollar of all your wealth\nBut marks the worker's dead.\nWe have yielded our best to give you rest\nAnd you lie on crimson wool.\nThen if blood be the price of all your wealth,\nGood God! We have paid it in full.",
+      "author": "Unknown Proletarian", "speaker": null, "title": "We Have Fed You All for a Thousand Years", "year": "1908", "publicationDate": "1908", "sourceType": "Song",
+      "currencyTerms": ["dollar", "wealth", "price", "paid"], "themes": ["labor", "wealth", "death", "power", "inequality"], "context": "An anonymous labor lyric measures accumulated wealth against the lives that produced it.", "showContext": false,
+      "repository": "Wikisource", "sourceUrl": "https://en.wikisource.org/wiki/Songs_of_the_Workers_%2815th_edition%29/We_Have_Fed_You_All_for_a_Thousand_Years", "sourceCitation": "Verse 1, Songs of the Workers, 15th edition (1919)", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "Anonymous work first published in 1908; public domain in the United States. This record covers the published lyrics, not a later recording.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Line breaks, spelling, and punctuation checked against the linked 1919 songbook transcription on 2026-09-07.", "queuePosition": 1014
+    },
+    {
+      "id": "fields-sunny-side-cent",
+      "quote": "If I never have a cent\nI'll be rich as Rockefeller\nGold dust at my feet\nOn the sunny side of the street",
+      "author": "Dorothy Fields and Jimmy McHugh", "speaker": null, "title": "On the Sunny Side of the Street", "year": "1930", "publicationDate": "1930", "sourceType": "Song",
+      "currencyTerms": ["cent", "rich", "gold"], "themes": ["wealth", "luck", "value", "optimism"], "context": "The refrain converts material poverty into emotional abundance.", "showContext": false,
+      "repository": "IMSLP", "sourceUrl": "https://imslp.org/wiki/On_the_Sunny_Side_of_the_Street_%28McHugh%2C_Jimmy%29", "sourceCitation": "Refrain, original 1930 sheet music", "publicDomainStatus": "Verified Public Domain",
+      "rightsNote": "The 1930 composition and lyrics entered the U.S. public domain on January 1, 2026. Later arrangements and recordings are not included.", "publishDate": null, "status": "draft", "reusable": false, "notes": "Words and lineation checked against the linked original sheet-music scan on 2026-09-07.", "queuePosition": 1015
+    },
+    {"id":"film-street-angel-lire","quote":"‘As I feared....your mother has a dangerous temperature. Get that prescription at once.’\n‘It will cost about twenty lire.’","author":"Monckton Hoffe","speaker":"The doctor","title":"Street Angel","year":"1928","publicationDate":"1928","sourceType":"Film","currencyTerms":["lire","cost"],"themes":["poverty","care"],"context":"Angela learns the price of medicine for her ill mother.","showContext":false,"repository":"Wikisource","sourceUrl":"https://en.wikisource.org/wiki/Street_Angel","sourceCitation":"Opening intertitles","publicDomainStatus":"Verified Public Domain","rightsNote":"The 1928 U.S. film is public domain; later scores and restorations are excluded.","publishDate":null,"status":"draft","reusable":false,"notes":"Transcribed from the linked film; recheck punctuation before scheduling.","queuePosition":1016},
+    {"id":"film-greed-gold","quote":"GOLD - GOLD - GOLD - GOLD\nBright and Yellow, Hard and Cold, Molten, Graven, Hammered, Rolled, Hard to Get and Light to Hold; Stolen, Borrowed, Squandered - Doled.","author":"Erich von Stroheim","speaker":"Opening intertitle, quoting Thomas Hood","title":"Greed","year":"1924","publicationDate":"1924-12-04","sourceType":"Film","currencyTerms":["gold","borrowed"],"themes":["wealth","debt","spending","greed"],"context":"The film opens by framing gold as difficult to gain and easy to lose.","showContext":false,"repository":"Filmsite film transcript","sourceUrl":"https://www.filmsite.org/gree.html","sourceCitation":"Opening intertitle","publicDomainStatus":"Verified Public Domain","rightsNote":"The 1924 U.S. film is public domain; later scores and restorations are excluded.","publishDate":null,"status":"draft","reusable":false,"notes":"Exact capitalization and punctuation checked against the linked transcript; verify against a film print before scheduling.","queuePosition":1017},
+    {"id":"film-animal-crackers-money","quote":"You have beauty, charm, money.\nYou have got money?\nIf not, we can quit right now.","author":"George S. Kaufman and Morrie Ryskind","speaker":"Captain Jeffrey T. Spaulding","title":"Animal Crackers","year":"1930","publicationDate":"1930-09-06","sourceType":"Film","currencyTerms":["money"],"themes":["wealth","love","satire"],"context":"Spaulding abruptly reprioritizes a declaration of admiration when money enters the question.","showContext":false,"repository":"Springfield! Springfield! transcript","sourceUrl":"https://www.springfieldspringfield.co.uk/movie_script.php?movie=animal-crackers","sourceCitation":"Dialogue transcript","publicDomainStatus":"Verified Public Domain","rightsNote":"The original 1930 film entered the U.S. public domain on January 1, 2026; later restorations are excluded.","publishDate":null,"status":"draft","reusable":false,"notes":"Checked against the linked transcript; verify against the original film soundtrack before scheduling.","queuePosition":1018},
+    {"id":"film-crowd-eight-dollar-raise","quote":"During the next five years two eventful things happened to the Simses. A baby sister was born....and John received an $8 raise.","author":"King Vidor and John V. A. Weaver","speaker":"Intertitle","title":"The Crowd","year":"1928","publicationDate":"1928-02-18","sourceType":"Film","currencyTerms":["$8","raise"],"themes":["wages","family","labor","satire"],"context":"A family milestone and a small wage increase receive the same dry narrative weight.","showContext":false,"repository":"Wikiquote film transcription","sourceUrl":"https://en.wikiquote.org/wiki/The_Crowd_%281928_film%29","sourceCitation":"Intertitle","publicDomainStatus":"Verified Public Domain","rightsNote":"The 1928 U.S. film is public domain; the later Carl Davis score and other restoration elements are excluded.","publishDate":null,"status":"draft","reusable":false,"notes":"Checked against the linked transcription; verify against an original silent print before scheduling.","queuePosition":1019}
+  ]
+}

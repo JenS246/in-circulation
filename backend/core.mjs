@@ -1,6 +1,6 @@
 export const SOURCE_TYPES = [
   'Fiction', 'Poetry', 'Play', 'Nonfiction', 'Letter', 'Diary', 'Oral history',
-  'Court opinion', 'Government document', 'Newspaper', 'Song', 'Other',
+  'Court opinion', 'Government document', 'Newspaper', 'Song', 'Film', 'Other',
 ];
 
 export const RIGHTS_STATUSES = [
