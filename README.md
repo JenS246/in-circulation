@@ -17,7 +17,7 @@ The frontend is dependency-free HTML, CSS, and JavaScript hosted by GitHub Pages
 
 This is intentionally smaller than a full-stack framework: the public files are cheap and durable, the only stateful component is one backed-up SQLite file, and the repository contains no secrets or production data.
 
-The public design uses the Tidal Ledger palette: aqua, deep green, violet, and vermilion. The quotation sits on an uninterrupted reading field while a separate edge channel fades out of view. Quotation words resolve in three-word groups on first load. Afterward, the groups recede in a newly shuffled order on every cycle, hold briefly, and return slowly with breathing room between phrases. This creates an erasure-poem rhythm without changing the source text. Readers who prefer reduced motion receive the complete, static text immediately. IBM Plex Serif and IBM Plex Mono are self-hosted under their OFL licenses in `site/assets/fonts/`.
+The public design uses the Tidal Ledger palette: aqua, deep green, violet, and vermilion. The quotation sits on an uninterrupted reading field while a separate edge channel fades out of view. Quotation words resolve slowly in three-word groups on first load. Afterward, the groups recede in a newly shuffled order on every cycle. Each phrase fades for 1.4 seconds, remains recessed for 2.6 seconds, returns over 1.4 seconds, and rests before another phrase moves. This creates an erasure-poem rhythm without changing the source text. Readers who prefer reduced motion receive the complete, static text immediately. IBM Plex Serif and IBM Plex Mono are self-hosted under their OFL licenses in `site/assets/fonts/`.
 
 ## Publication behavior
 

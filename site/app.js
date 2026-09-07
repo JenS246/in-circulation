@@ -60,7 +60,7 @@ function revealQuote(value) {
     if (/^\s+$/.test(token)) return escapeHtml(token);
     const groupIndex = Math.floor(words / 3);
     words += 1;
-    const revealDelay = 80 + groupIndex * 85;
+    const revealDelay = 120 + groupIndex * 220;
     return `<span class="quote-group" data-phrase="${groupIndex}" style="--reveal-delay:${revealDelay}ms" aria-hidden="true">${escapeHtml(token)}</span>`;
   }).join('');
 }
@@ -102,14 +102,14 @@ function startQuoteErasure() {
     const phrase = order[phraseIndex];
     if (!phrase[0]?.isConnected) return stopQuoteErasure();
     phrase.forEach((word) => word.classList.add('is-receding'));
-    erasureRestoreTimer = setTimeout(() => phrase.forEach((word) => word.classList.remove('is-receding')), 1800);
+    erasureRestoreTimer = setTimeout(() => phrase.forEach((word) => word.classList.remove('is-receding')), 4000);
     previousPhrase = phrase;
     phraseIndex = (phraseIndex + 1) % phrases.length;
     if (phraseIndex === 0) order = shuffle(phrases, previousPhrase);
-    erasureTimer = setTimeout(recede, phraseIndex === 0 ? 5200 : 3200);
+    erasureTimer = setTimeout(recede, phraseIndex === 0 ? 12500 : 7800);
   };
 
-  erasureTimer = setTimeout(recede, Math.max(3400, phrases.length * 90 + 2200));
+  erasureTimer = setTimeout(recede, Math.max(8000, phrases.length * 220 + 6200));
 }
 
 function quoteView(quote, dateLabel, today = false) {
