@@ -82,8 +82,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .quotation blockquote { margin: 0; max-width: 22ch; white-space: pre-wrap; font: 400 clamp(2.85rem, 5.05vw, 5.95rem)/1.035 var(--serif); letter-spacing: -.032em; }
 .quotation.is-medium blockquote { font-size: clamp(2.7rem, 4.6vw, 5.35rem); }
 .quotation.is-long blockquote { font-size: clamp(2.1rem, 3.55vw, 4.2rem); line-height: 1.07; }
-.quote-group { display: inline-block; opacity: 1; transform: translateY(0); transition: opacity 1.4s cubic-bezier(.45, 0, .2, 1); }
-.quote-group.is-receding { opacity: .44; }
+.quote-group { display: inline-block; opacity: 1; transform: translateY(0); transition: opacity 1.8s cubic-bezier(.45, 0, .2, 1); }
+.quote-group.is-receding { opacity: .28; }
 .quotation figcaption { margin-top: clamp(2rem, 4vw, 3.25rem); display: flex; flex-direction: column; align-items: flex-start; font: 400 clamp(1rem, 1.3vw, 1.25rem)/1.45 var(--serif); }
 .quotation figcaption strong { color: var(--accent); font-weight: 500; }
 .quotation figcaption cite { font-style: italic; }
@@ -100,31 +100,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .action-message { min-width: 5rem; color: var(--accent); }
 
 .current-channel { grid-column: 2; grid-row: 1 / 4; min-height: 68vh; display: flex; align-items: stretch; justify-content: flex-end; gap: clamp(.3rem, .6vw, .75rem); overflow: hidden; }
-.current-channel span { display: block; width: clamp(.65rem, 1.4vw, 1.6rem); transform-origin: bottom; }
+.current-channel span { display: block; width: clamp(.65rem, 1.4vw, 1.6rem); transform-origin: bottom; --tide-rise: -.7rem; --tide-fall: .45rem; --tide-duration: 13s; --tide-delay: -4s; }
 .current-channel span:nth-child(1) { height: 100%; align-self: end; background: var(--accent); }
-.current-channel span:nth-child(2) { height: 82%; align-self: end; background: var(--flare); }
-.current-channel span:nth-child(3) { height: 61%; align-self: end; background: var(--accent); opacity: .65; }
-.current-channel span:nth-child(4) { height: 38%; align-self: end; background: var(--flare); opacity: .38; }
-.current-channel span:nth-child(5) { height: 18%; align-self: end; background: var(--accent); opacity: .14; }
+.current-channel span:nth-child(2) { height: 82%; align-self: end; background: var(--flare); --tide-rise: -.35rem; --tide-fall: .8rem; --tide-duration: 11s; --tide-delay: -8s; }
+.current-channel span:nth-child(3) { height: 61%; align-self: end; background: var(--accent); opacity: .65; --tide-rise: -.9rem; --tide-fall: .25rem; --tide-duration: 15s; --tide-delay: -2s; }
+.current-channel span:nth-child(4) { height: 38%; align-self: end; background: var(--flare); opacity: .38; --tide-rise: -.25rem; --tide-fall: 1rem; --tide-duration: 12s; --tide-delay: -10s; }
+.current-channel span:nth-child(5) { height: 18%; align-self: end; background: var(--accent); opacity: .14; --tide-rise: -1rem; --tide-fall: .3rem; --tide-duration: 9s; --tide-delay: -5s; }
 
 @media (prefers-reduced-motion: no-preference) {
   .quote-group {
-    animation: quote-resolve 1.15s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay) backwards;
+    animation: quote-resolve 2.1s cubic-bezier(.16, .7, .2, 1) var(--reveal-delay) backwards;
   }
-  .current-channel span { animation: current-arrives .8s cubic-bezier(.2, .7, .2, 1) both; }
-  .current-channel span:nth-child(2) { animation-delay: 80ms; }
-  .current-channel span:nth-child(3) { animation-delay: 160ms; }
-  .current-channel span:nth-child(4) { animation-delay: 240ms; }
-  .current-channel span:nth-child(5) { animation-delay: 320ms; }
+  .current-channel span { animation: current-tide var(--tide-duration) ease-in-out var(--tide-delay) infinite alternate; }
 }
 
 @keyframes quote-resolve {
-  from { opacity: 0; transform: translateY(.16em); }
+  from { opacity: .04; transform: translateY(.07em); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes current-arrives {
-  from { opacity: 0; transform: scaleY(.72); }
+@keyframes current-tide {
+  from { transform: translateY(var(--tide-rise)); }
+  to { transform: translateY(var(--tide-fall)); }
 }
 
 .page { flex: 1; padding-bottom: 5rem; }
