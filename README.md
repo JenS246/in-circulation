@@ -17,7 +17,7 @@ The frontend is dependency-free HTML, CSS, and JavaScript hosted by GitHub Pages
 
 This is intentionally smaller than a full-stack framework: the public files are cheap and durable, the only stateful component is one backed-up SQLite file, and the repository contains no secrets or production data.
 
-The public design uses the Tidal Ledger palette: aqua, deep green, violet, and vermilion. The quotation sits on an uninterrupted reading field while a separate edge channel fades out of view. Quotation words resolve in three-word groups on first load; readers who prefer reduced motion receive the complete text immediately. Bodoni Moda is self-hosted under its OFL license in `site/assets/fonts/`.
+The public design uses the Tidal Ledger palette: aqua, deep green, violet, and vermilion. The quotation sits on an uninterrupted reading field while a separate edge channel fades out of view. Quotation words resolve in three-word groups on first load. Afterward, one group at a time briefly recedes and returns, creating an erasure-poem rhythm without changing the source text. Readers who prefer reduced motion receive the complete, static text immediately. Bodoni Moda is self-hosted under its OFL license in `site/assets/fonts/`.
 
 ## Publication behavior
 

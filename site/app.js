@@ -60,8 +60,40 @@ function revealQuote(value) {
     if (/^\s+$/.test(token)) return escapeHtml(token);
     const groupIndex = Math.floor(words / 3);
     words += 1;
-    return `<span class="quote-group" style="--reveal-delay:${80 + groupIndex * 85}ms" aria-hidden="true">${escapeHtml(token)}</span>`;
+    const revealDelay = 80 + groupIndex * 85;
+    return `<span class="quote-group" data-phrase="${groupIndex}" style="--reveal-delay:${revealDelay}ms" aria-hidden="true">${escapeHtml(token)}</span>`;
   }).join('');
+}
+
+let erasureTimer;
+let erasureRestoreTimer;
+
+function stopQuoteErasure() {
+  clearTimeout(erasureTimer);
+  clearTimeout(erasureRestoreTimer);
+  erasureTimer = undefined;
+  erasureRestoreTimer = undefined;
+}
+
+function startQuoteErasure() {
+  stopQuoteErasure();
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const words = [...document.querySelectorAll('.quotation .quote-group')];
+  const phrases = [...new Set(words.map((word) => word.dataset.phrase))]
+    .map((phrase) => words.filter((word) => word.dataset.phrase === phrase));
+  if (!phrases.length) return;
+
+  let phraseIndex = 0;
+  const recede = () => {
+    const phrase = phrases[phraseIndex];
+    if (!phrase[0]?.isConnected) return stopQuoteErasure();
+    phrase.forEach((word) => word.classList.add('is-receding'));
+    erasureRestoreTimer = setTimeout(() => phrase.forEach((word) => word.classList.remove('is-receding')), 700);
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    erasureTimer = setTimeout(recede, phraseIndex === 0 ? 3900 : 1500);
+  };
+
+  erasureTimer = setTimeout(recede, Math.max(2700, phrases.length * 90 + 1300));
 }
 
 function quoteView(quote, dateLabel, today = false) {
@@ -105,6 +137,7 @@ function wireQuoteActions(quote) {
     event.currentTarget.textContent = favorites.has(quote.id) ? 'Bookmarked' : 'Bookmark';
     message.textContent = favorites.has(quote.id) ? 'Saved locally.' : 'Removed.';
   });
+  startQuoteErasure();
 }
 
 async function home() {
@@ -260,7 +293,7 @@ async function settingsPage() {
 }
 
 async function route() {
-  window.scrollTo(0,0); document.title = SITE_TITLE;
+  stopQuoteErasure(); window.scrollTo(0,0); document.title = SITE_TITLE;
   const path = (location.hash.slice(1) || '/').replace(/\/+$/, '') || '/';
   app.innerHTML = '<main class="loading-state"><p>Retrieving the edition…</p></main>';
   try {

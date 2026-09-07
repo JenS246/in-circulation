@@ -57,7 +57,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .quotation blockquote { margin: 0; max-width: 22ch; white-space: pre-wrap; font: 400 clamp(3rem, 5.35vw, 6.35rem)/1.01 var(--serif); letter-spacing: -.048em; text-wrap: balance; }
 .quotation.is-medium blockquote { font-size: clamp(2.7rem, 4.6vw, 5.35rem); }
 .quotation.is-long blockquote { font-size: clamp(2.1rem, 3.55vw, 4.2rem); line-height: 1.07; }
-.quote-group { display: inline-block; }
+.quote-group { display: inline-block; opacity: 1; transform: translateY(0); transition: opacity .55s cubic-bezier(.45, 0, .2, 1); }
+.quote-group.is-receding { opacity: .68; }
 .quotation figcaption { margin-top: clamp(2rem, 4vw, 3.25rem); display: flex; flex-direction: column; align-items: flex-start; font: 400 clamp(1rem, 1.3vw, 1.25rem)/1.45 var(--serif); }
 .quotation figcaption strong { color: var(--accent); font-weight: 500; }
 .quotation figcaption cite { font-style: italic; }
@@ -82,7 +83,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .current-channel span:nth-child(5) { height: 18%; align-self: end; background: var(--accent); opacity: .14; }
 
 @media (prefers-reduced-motion: no-preference) {
-  .quote-group { opacity: 0; transform: translateY(.16em); animation: quote-resolve .65s cubic-bezier(.2, .7, .2, 1) forwards; animation-delay: var(--reveal-delay); }
+  .quote-group {
+    animation: quote-resolve .65s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay) backwards;
+  }
   .current-channel span { animation: current-arrives .8s cubic-bezier(.2, .7, .2, 1) both; }
   .current-channel span:nth-child(2) { animation-delay: 80ms; }
   .current-channel span:nth-child(3) { animation-delay: 160ms; }
@@ -91,6 +94,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 
 @keyframes quote-resolve {
+  from { opacity: 0; transform: translateY(.16em); }
   to { opacity: 1; transform: translateY(0); }
 }
 
