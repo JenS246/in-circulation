@@ -3,7 +3,32 @@ const SITE_TITLE = 'In Circulation';
 const SOURCE_TYPES = ['Fiction','Poetry','Play','Nonfiction','Letter','Diary','Oral history','Court opinion','Government document','Newspaper','Song','Film','Other'];
 const RIGHTS = ['Verified Public Domain','U.S. Government Work','Permission / Open License','Needs Review','Do Not Publish'];
 const STATUSES = ['draft','scheduled','published'];
+const COLORWAYS = [
+  {name:'Citron current',paper:'#e7f65b',ink:'#20342c',muted:'#435748',wash:'#f2fb9b',field:'#fbffd1',accent:'#4b2894',flare:'#ff5b45',danger:'#84231d'},
+  {name:'Coral tender',paper:'#ff9a82',ink:'#233b3a',muted:'#553d3b',wash:'#ffc1ae',field:'#ffe0d6',accent:'#173c93',flare:'#dfff58',danger:'#7b1e26'},
+  {name:'Periwinkle note',paper:'#a9adff',ink:'#1b3342',muted:'#37435b',wash:'#cbd0ff',field:'#e6e8ff',accent:'#7d193c',flare:'#ffeb5b',danger:'#7d193c'},
+  {name:'Pink exchange',paper:'#f99bce',ink:'#203943',muted:'#504052',wash:'#ffc6e4',field:'#ffe2f1',accent:'#16458f',flare:'#e6f65a',danger:'#851e39'},
+  {name:'Tidal ledger',paper:'#7ef1dc',ink:'#153d3b',muted:'#315f5a',wash:'#b9f9ec',field:'#d9fff7',accent:'#4329b8',flare:'#ff5a3d',danger:'#8e2019'},
+];
 const app = document.querySelector('#app');
+
+function applyNextColorway() {
+  let index = 0;
+  try {
+    const stored = localStorage.getItem('in-circulation-colorway');
+    const previous = Number(stored);
+    index = stored === null || !Number.isInteger(previous) ? 0 : (previous + 1) % COLORWAYS.length;
+    localStorage.setItem('in-circulation-colorway', String(index));
+  } catch { index = Math.floor(Math.random() * COLORWAYS.length); }
+  const colorway = COLORWAYS[index];
+  Object.entries(colorway).forEach(([property, value]) => {
+    if (property !== 'name') document.documentElement.style.setProperty(`--${property}`, value);
+  });
+  document.documentElement.dataset.colorway = colorway.name;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', colorway.paper);
+}
+
+applyNextColorway();
 
 const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[character]));
 const excerpt = (value, maximum = 170) => {
@@ -98,37 +123,41 @@ async function renderShareImage(quote, canvas) {
     document.fonts.load('28px "IBM Plex Mono"'),
   ]);
   const context = canvas.getContext('2d');
-  context.fillStyle = '#7ef1dc';
+  const styles = getComputedStyle(document.documentElement);
+  const palette = Object.fromEntries(['paper','ink','accent','flare'].map((name) => [name, styles.getPropertyValue(`--${name}`).trim()]));
+  context.fillStyle = palette.paper;
   context.fillRect(0, 0, canvas.width, canvas.height);
 
   const bars = [
-    {x:918, y:88, width:25, height:904, color:'#4329b8'},
-    {x:950, y:274, width:25, height:718, color:'#ff5a3d'},
-    {x:982, y:456, width:25, height:536, color:'rgba(67,41,184,.65)'},
-    {x:1014, y:650, width:25, height:342, color:'rgba(255,90,61,.38)'},
-    {x:1046, y:816, width:25, height:176, color:'rgba(67,41,184,.18)'},
+    {x:918, y:88, width:25, height:904, color:palette.accent, opacity:1},
+    {x:950, y:274, width:25, height:718, color:palette.flare, opacity:1},
+    {x:982, y:456, width:25, height:536, color:palette.accent, opacity:.65},
+    {x:1014, y:650, width:25, height:342, color:palette.flare, opacity:.38},
+    {x:1046, y:816, width:25, height:176, color:palette.accent, opacity:.18},
   ];
   bars.forEach((bar) => {
     context.fillStyle = bar.color;
+    context.globalAlpha = bar.opacity;
     context.fillRect(bar.x, bar.y, bar.width, bar.height);
   });
+  context.globalAlpha = 1;
 
-  context.fillStyle = '#153d3b';
+  context.fillStyle = palette.ink;
   context.font = '500 27px "IBM Plex Mono", "Courier New", monospace';
   context.fillText(SITE_TITLE, 70, 82);
 
   const layout = fittedQuoteLayout(context, quote.quote, 780, 590);
   context.font = `400 ${layout.size}px "IBM Plex Serif", Georgia, serif`;
-  context.fillStyle = '#153d3b';
+  context.fillStyle = palette.ink;
   let y = 188;
   layout.lines.forEach((line) => {
     if (line) context.fillText(line, 70, y);
     y += layout.lineHeight;
   });
 
-  context.fillStyle = '#4329b8';
+  context.fillStyle = palette.accent;
   drawFittedCanvasLine(context, creator(quote), 70, 884, 770, 38, {weight:500, family:'"IBM Plex Serif", Georgia, serif'});
-  context.fillStyle = '#153d3b';
+  context.fillStyle = palette.ink;
   const source = `${quote.speaker && quote.speaker !== quote.author ? `Written by ${quote.author}. ` : ''}${quote.title}${quote.year ? `, ${quote.year}` : ''}`;
   drawFittedCanvasLine(context, source, 70, 932, 770, 25, {weight:400, family:'"IBM Plex Mono", "Courier New", monospace'});
   return new Promise((resolve, reject) => canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error('Could not prepare the image.')), 'image/png'));
