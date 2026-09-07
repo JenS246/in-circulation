@@ -230,12 +230,16 @@ input::placeholder, textarea::placeholder { color: #657269; opacity: 1; }
   .wordmark { font-size: 1.08rem; }
   .masthead nav { gap: .9rem; font-size: .9rem; }
   .daily-edition { padding-top: 2.25rem; grid-template-columns: 1fr; grid-template-rows: auto auto auto; }
-  .edition-index { grid-column: 1; grid-row: 1; }
-  .current-channel { display: none; }
-  .quotation { grid-column: 1; grid-row: 2; margin: 4rem 0 4.5rem; }
+  .edition-index { grid-column: 1; grid-row: 1; position: relative; z-index: 1; }
+  .current-channel { display: flex; position: absolute; z-index: 0; top: 7.5rem; right: .1rem; width: 1.45rem; height: clamp(17rem, 42vh, 22rem); min-height: 0; gap: .16rem; opacity: .76; pointer-events: none; }
+  .current-channel span { width: .34rem; --tide-rise: -1rem; --tide-fall: .65rem; --tide-duration: 12s; }
+  .current-channel span:nth-child(2) { width: .3rem; --tide-rise: -.5rem; --tide-fall: 1.1rem; --tide-duration: 9.5s; }
+  .current-channel span:nth-child(3) { width: .26rem; --tide-rise: -1.25rem; --tide-fall: .4rem; --tide-duration: 13s; }
+  .current-channel span:nth-child(n+4) { display: none; }
+  .quotation { grid-column: 1; grid-row: 2; z-index: 1; margin: 4rem 0 4.5rem; padding-right: 1.8rem; }
   .quotation blockquote, .quotation.is-medium blockquote { max-width: none; font-size: clamp(2.65rem, 12.8vw, 4.2rem); line-height: 1.02; }
   .quotation.is-long blockquote { font-size: clamp(2rem, 9.3vw, 3.1rem); line-height: 1.08; }
-  .source-note { grid-column: 1; grid-row: 3; width: auto; margin: 0; grid-template-columns: 1fr; }
+  .source-note { grid-column: 1; grid-row: 3; position: relative; z-index: 1; width: auto; margin: 0; grid-template-columns: 1fr; }
   .edition-actions { flex-direction: row; flex-wrap: wrap; gap: .5rem 1.2rem; }
   .share-dialog { overflow-y: auto; }
   .share-sheet { height: auto; grid-template-columns: 1fr; }
