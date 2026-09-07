@@ -22,7 +22,7 @@ function shell(content, active = '') {
       <a href="#/"${current('home')}>Today</a><a href="#/archive"${current('archive')}>Archive</a><a href="#/stats"${current('stats')}>Index</a>
     </nav></header>
     ${content}
-    <footer class="site-footer"><nav aria-label="Publication links"><a href="#/admin">Curator sign-in</a><a href="https://github.com/JenS246/in-circulation">Source code</a></nav></footer>
+    <footer class="site-footer"><nav aria-label="Publication links"><a href="#/admin">Curator sign-in</a></nav></footer>
   </div>`;
 }
 
@@ -83,13 +83,29 @@ function startQuoteErasure() {
     .map((phrase) => words.filter((word) => word.dataset.phrase === phrase));
   if (!phrases.length) return;
 
+  const shuffle = (items, previous) => {
+    const shuffled = [...items];
+    for (let index = shuffled.length - 1; index > 0; index -= 1) {
+      const randomIndex = Math.floor(Math.random() * (index + 1));
+      [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+    }
+    if (shuffled.length > 1 && shuffled[0] === previous) {
+      [shuffled[0], shuffled[1]] = [shuffled[1], shuffled[0]];
+    }
+    return shuffled;
+  };
+
+  let order = shuffle(phrases);
+  let previousPhrase;
   let phraseIndex = 0;
   const recede = () => {
-    const phrase = phrases[phraseIndex];
+    const phrase = order[phraseIndex];
     if (!phrase[0]?.isConnected) return stopQuoteErasure();
     phrase.forEach((word) => word.classList.add('is-receding'));
     erasureRestoreTimer = setTimeout(() => phrase.forEach((word) => word.classList.remove('is-receding')), 700);
+    previousPhrase = phrase;
     phraseIndex = (phraseIndex + 1) % phrases.length;
+    if (phraseIndex === 0) order = shuffle(phrases, previousPhrase);
     erasureTimer = setTimeout(recede, phraseIndex === 0 ? 3900 : 1500);
   };
 
@@ -112,7 +128,7 @@ function quoteView(quote, dateLabel, today = false) {
       ${quote.sourceCitation ? `<p>${escapeHtml(quote.sourceCitation)}</p>` : ''}
       ${quote.context ? `<p class="public-context">${escapeHtml(quote.context)}</p>` : ''}
       <p class="rights">${escapeHtml(quote.publicDomainStatus)}${quote.rightsNote ? `. ${escapeHtml(quote.rightsNote)}` : ''}</p>
-      <a class="source-link" href="${escapeHtml(quote.sourceUrl)}" rel="noreferrer" target="_blank">View original source</a>
+      <a class="source-link" href="${escapeHtml(quote.sourceUrl)}" rel="noreferrer" target="_blank">Original Source</a>
     </div><div class="edition-actions">
       <button type="button" data-copy>Copy quote</button><button type="button" data-share>Share</button><button type="button" data-favorite>${isFavorite(quote.id) ? 'Bookmarked' : 'Bookmark'}</button><span class="action-message" aria-live="polite"></span>
     </div></footer>
