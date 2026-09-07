@@ -102,14 +102,14 @@ function startQuoteErasure() {
     const phrase = order[phraseIndex];
     if (!phrase[0]?.isConnected) return stopQuoteErasure();
     phrase.forEach((word) => word.classList.add('is-receding'));
-    erasureRestoreTimer = setTimeout(() => phrase.forEach((word) => word.classList.remove('is-receding')), 700);
+    erasureRestoreTimer = setTimeout(() => phrase.forEach((word) => word.classList.remove('is-receding')), 1800);
     previousPhrase = phrase;
     phraseIndex = (phraseIndex + 1) % phrases.length;
     if (phraseIndex === 0) order = shuffle(phrases, previousPhrase);
-    erasureTimer = setTimeout(recede, phraseIndex === 0 ? 3900 : 1500);
+    erasureTimer = setTimeout(recede, phraseIndex === 0 ? 5200 : 3200);
   };
 
-  erasureTimer = setTimeout(recede, Math.max(2700, phrases.length * 90 + 1300));
+  erasureTimer = setTimeout(recede, Math.max(3400, phrases.length * 90 + 2200));
 }
 
 function quoteView(quote, dateLabel, today = false) {

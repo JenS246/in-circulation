@@ -82,7 +82,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .quotation blockquote { margin: 0; max-width: 22ch; white-space: pre-wrap; font: 400 clamp(2.85rem, 5.05vw, 5.95rem)/1.035 var(--serif); letter-spacing: -.032em; }
 .quotation.is-medium blockquote { font-size: clamp(2.7rem, 4.6vw, 5.35rem); }
 .quotation.is-long blockquote { font-size: clamp(2.1rem, 3.55vw, 4.2rem); line-height: 1.07; }
-.quote-group { display: inline-block; opacity: 1; transform: translateY(0); transition: opacity .55s cubic-bezier(.45, 0, .2, 1); }
+.quote-group { display: inline-block; opacity: 1; transform: translateY(0); transition: opacity .9s cubic-bezier(.45, 0, .2, 1); }
 .quote-group.is-receding { opacity: .58; }
 .quotation figcaption { margin-top: clamp(2rem, 4vw, 3.25rem); display: flex; flex-direction: column; align-items: flex-start; font: 400 clamp(1rem, 1.3vw, 1.25rem)/1.45 var(--serif); }
 .quotation figcaption strong { color: var(--accent); font-weight: 500; }
