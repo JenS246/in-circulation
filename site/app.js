@@ -22,7 +22,7 @@ function shell(content, active = '') {
       <a href="#/"${current('home')}>Today</a><a href="#/archive"${current('archive')}>Archive</a><a href="#/stats"${current('stats')}>Index</a>
     </nav></header>
     ${content}
-    <footer class="site-footer"><p>One sourced quotation each day.</p><nav aria-label="Publication links"><a href="#/admin">Curator sign-in</a><a href="https://github.com/JenS246/in-circulation">Source code</a></nav></footer>
+    <footer class="site-footer"><nav aria-label="Publication links"><a href="#/admin">Curator sign-in</a><a href="https://github.com/JenS246/in-circulation">Source code</a></nav></footer>
   </div>`;
 }
 
@@ -53,12 +53,24 @@ function copyText(quote) {
   return `${quote.quote}\n\n${attribution}`;
 }
 
+function revealQuote(value) {
+  const tokens = String(value || '').match(/\s+|\S+/g) || [];
+  let words = 0;
+  return tokens.map((token) => {
+    if (/^\s+$/.test(token)) return escapeHtml(token);
+    const groupIndex = Math.floor(words / 3);
+    words += 1;
+    return `<span class="quote-group" style="--reveal-delay:${80 + groupIndex * 85}ms" aria-hidden="true">${escapeHtml(token)}</span>`;
+  }).join('');
+}
+
 function quoteView(quote, dateLabel, today = false) {
   const name = creator(quote);
   const lengthClass = quote.quote.length > 240 ? 'is-long' : quote.quote.length > 130 ? 'is-medium' : 'is-short';
   return `<main id="main" class="daily-edition">
-    <div class="edition-index" aria-label="Edition details"><time datetime="${escapeHtml(quote.publishedDate || quote.publishDate || '')}">${escapeHtml(dateLabel)}</time><span>${today ? 'Today’s quotation' : 'From the archive'}</span></div>
-    <figure class="quotation ${lengthClass}"><blockquote>${escapeHtml(quote.quote)}</blockquote><figcaption>
+    <div class="current-channel" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="edition-index"><time datetime="${escapeHtml(quote.publishedDate || quote.publishDate || '')}">${escapeHtml(dateLabel)}</time></div>
+    <figure class="quotation ${lengthClass}"><blockquote aria-label="${escapeHtml(quote.quote)}">${revealQuote(quote.quote)}</blockquote><figcaption>
       <strong>${escapeHtml(name)}</strong>
       ${quote.speaker && quote.speaker !== quote.author ? `<span>Written by ${escapeHtml(quote.author)}</span>` : ''}
       <span><cite>${escapeHtml(quote.title)}</cite>${quote.year ? `, ${escapeHtml(quote.year)}` : ''}</span>

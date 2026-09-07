@@ -17,6 +17,8 @@ The frontend is dependency-free HTML, CSS, and JavaScript hosted by GitHub Pages
 
 This is intentionally smaller than a full-stack framework: the public files are cheap and durable, the only stateful component is one backed-up SQLite file, and the repository contains no secrets or production data.
 
+The public design uses the Tidal Ledger palette: aqua, deep green, violet, and vermilion. The quotation sits on an uninterrupted reading field while a separate edge channel fades out of view. Quotation words resolve in three-word groups on first load; readers who prefer reduced motion receive the complete text immediately. Bodoni Moda is self-hosted under its OFL license in `site/assets/fonts/`.
+
 ## Publication behavior
 
 For the date in the configured IANA timezone (default `America/New_York`), the API:
@@ -135,6 +137,6 @@ Also download JSON or CSV from the editor after major changes, then store it som
 
 ## Accessibility and safeguards
 
-The site uses semantic figures, blockquotes, time elements, labels, headings, and navigation; visible keyboard focus; responsive type; strong contrast; and reduced-motion support. The visual system uses typography, whitespace, and rules instead of dashboard cards or decorative animation.
+The site uses semantic figures, blockquotes, time elements, labels, headings, and navigation; visible keyboard focus; responsive type; strong contrast; and reduced-motion support. The visual system uses typography, whitespace, and a peripheral current motif instead of dashboard cards or decorative dividers.
 
 The API uses HTTPS, restricts cross-origin browser calls, requires HTTP Basic authentication for every editor endpoint, rate-limits repeated failed sign-ins, and never returns internal notes through public quote routes. Basic authentication is appropriate here only because Caddy enforces HTTPS; rotate the editor password by changing `.env` and reloading PM2.
