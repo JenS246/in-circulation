@@ -53,6 +53,155 @@ function copyText(quote) {
   return `${quote.quote}\n\n${attribution}`;
 }
 
+function wrapCanvasLines(context, value, maximumWidth) {
+  const lines = [];
+  String(value || '').split('\n').forEach((paragraph) => {
+    if (!paragraph.trim()) { lines.push(''); return; }
+    const words = paragraph.trim().split(/\s+/);
+    let line = '';
+    words.forEach((word) => {
+      const candidate = line ? `${line} ${word}` : word;
+      if (line && context.measureText(candidate).width > maximumWidth) {
+        lines.push(line);
+        line = word;
+      } else line = candidate;
+    });
+    if (line) lines.push(line);
+  });
+  return lines;
+}
+
+function fittedQuoteLayout(context, value, maximumWidth, maximumHeight) {
+  for (let size = 78; size >= 38; size -= 2) {
+    context.font = `400 ${size}px "IBM Plex Serif", Georgia, serif`;
+    const lines = wrapCanvasLines(context, value, maximumWidth);
+    const lineHeight = size * 1.08;
+    if (lines.length * lineHeight <= maximumHeight) return {lines, lineHeight, size};
+  }
+  context.font = '400 38px "IBM Plex Serif", Georgia, serif';
+  return {lines:wrapCanvasLines(context, value, maximumWidth), lineHeight:41, size:38};
+}
+
+function drawFittedCanvasLine(context, value, x, y, maximumWidth, size, font) {
+  let fittedSize = size;
+  do {
+    context.font = `${font.weight} ${fittedSize}px ${font.family}`;
+    fittedSize -= 1;
+  } while (context.measureText(value).width > maximumWidth && fittedSize > 18);
+  context.fillText(value, x, y);
+}
+
+async function renderShareImage(quote, canvas) {
+  await document.fonts.ready;
+  await Promise.all([
+    document.fonts.load('78px "IBM Plex Serif"'),
+    document.fonts.load('28px "IBM Plex Mono"'),
+  ]);
+  const context = canvas.getContext('2d');
+  context.fillStyle = '#7ef1dc';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+
+  const bars = [
+    {x:918, y:88, width:25, height:904, color:'#4329b8'},
+    {x:950, y:274, width:25, height:718, color:'#ff5a3d'},
+    {x:982, y:456, width:25, height:536, color:'rgba(67,41,184,.65)'},
+    {x:1014, y:650, width:25, height:342, color:'rgba(255,90,61,.38)'},
+    {x:1046, y:816, width:25, height:176, color:'rgba(67,41,184,.18)'},
+  ];
+  bars.forEach((bar) => {
+    context.fillStyle = bar.color;
+    context.fillRect(bar.x, bar.y, bar.width, bar.height);
+  });
+
+  context.fillStyle = '#153d3b';
+  context.font = '500 27px "IBM Plex Mono", "Courier New", monospace';
+  context.fillText(SITE_TITLE, 70, 82);
+
+  const layout = fittedQuoteLayout(context, quote.quote, 780, 590);
+  context.font = `400 ${layout.size}px "IBM Plex Serif", Georgia, serif`;
+  context.fillStyle = '#153d3b';
+  let y = 188;
+  layout.lines.forEach((line) => {
+    if (line) context.fillText(line, 70, y);
+    y += layout.lineHeight;
+  });
+
+  context.fillStyle = '#4329b8';
+  drawFittedCanvasLine(context, creator(quote), 70, 884, 770, 38, {weight:500, family:'"IBM Plex Serif", Georgia, serif'});
+  context.fillStyle = '#153d3b';
+  const source = `${quote.speaker && quote.speaker !== quote.author ? `Written by ${quote.author}. ` : ''}${quote.title}${quote.year ? `, ${quote.year}` : ''}`;
+  drawFittedCanvasLine(context, source, 70, 932, 770, 25, {weight:400, family:'"IBM Plex Mono", "Courier New", monospace'});
+  return new Promise((resolve, reject) => canvas.toBlob((blob) => blob ? resolve(blob) : reject(new Error('Could not prepare the image.')), 'image/png'));
+}
+
+function downloadShareImage(blob, quote) {
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = `in-circulation-${quote.id}.png`;
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function openSharePanel(quote) {
+  const dialog = document.createElement('dialog');
+  dialog.className = 'share-dialog';
+  dialog.setAttribute('aria-labelledby', 'share-heading');
+  dialog.innerHTML = `<div class="share-sheet">
+    <div class="share-preview"><canvas width="1080" height="1080" role="img" aria-label="Share image for ${escapeHtml(copyText(quote))}"></canvas></div>
+    <div class="share-options">
+      <h2 id="share-heading">Share quotation</h2>
+      <button class="solid-button" type="button" data-share-image>Share image</button>
+      <button class="text-button" type="button" data-copy-image>Copy image</button>
+      <button class="text-button" type="button" data-download-image>Download PNG</button>
+      <button class="text-button" type="button" data-copy-share-text>Copy quote</button>
+      <p class="share-status" aria-live="polite"></p>
+      <button class="text-button share-close" type="button" data-close-share>Close</button>
+    </div>
+  </div>`;
+  const blob = await renderShareImage(quote, dialog.querySelector('canvas'));
+  const status = dialog.querySelector('.share-status');
+  const shareUrl = `${API_BASE}/q/${encodeURIComponent(quote.id)}`;
+  const file = new File([blob], `in-circulation-${quote.id}.png`, {type:'image/png'});
+
+  dialog.querySelector('[data-copy-image]').addEventListener('click', async () => {
+    try {
+      if (!navigator.clipboard?.write || !window.ClipboardItem) throw new Error('unsupported');
+      await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
+      status.textContent = 'Image copied.';
+    } catch { status.textContent = 'Image copying is unavailable here. Use Download PNG.'; }
+  });
+  dialog.querySelector('[data-download-image]').addEventListener('click', () => {
+    downloadShareImage(blob, quote);
+    status.textContent = 'Image downloaded.';
+  });
+  dialog.querySelector('[data-copy-share-text]').addEventListener('click', async () => {
+    await navigator.clipboard.writeText(copyText(quote));
+    status.textContent = 'Quote copied.';
+  });
+  dialog.querySelector('[data-share-image]').addEventListener('click', async () => {
+    try {
+      if (navigator.share && navigator.canShare?.({files:[file]})) {
+        await navigator.share({title:`${SITE_TITLE}: ${creator(quote)}`,text:copyText(quote),url:shareUrl,files:[file]});
+        status.textContent = 'Shared.';
+      } else {
+        downloadShareImage(blob, quote);
+        status.textContent = 'Image downloaded for sharing.';
+      }
+    } catch (error) {
+      if (error.name !== 'AbortError') status.textContent = 'Sharing is unavailable. Copy or download the image instead.';
+    }
+  });
+  dialog.querySelector('[data-close-share]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('close', () => dialog.remove(), {once:true});
+  document.body.append(dialog);
+  dialog.showModal();
+  dialog.querySelector('[data-share-image]').focus();
+}
+
 function revealQuote(value) {
   const tokens = String(value || '').match(/\s+|\S+/g) || [];
   let words = 0;
@@ -142,9 +291,8 @@ function wireQuoteActions(quote) {
     message.textContent = 'Copied.';
   });
   document.querySelector('[data-share]')?.addEventListener('click', async () => {
-    const url = `${API_BASE}/q/${encodeURIComponent(quote.id)}`;
-    if (navigator.share) await navigator.share({title:`${SITE_TITLE}: ${creator(quote)}`,text:excerpt(quote.quote),url});
-    else { await navigator.clipboard.writeText(url); message.textContent = 'Link copied.'; }
+    try { await openSharePanel(quote); }
+    catch { message.textContent = 'Could not prepare the share image.'; }
   });
   document.querySelector('[data-favorite]')?.addEventListener('click', (event) => {
     const favorites = new Set(JSON.parse(localStorage.getItem('in-circulation-favorites') || '[]'));

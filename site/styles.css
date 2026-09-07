@@ -99,6 +99,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .edition-actions button:active, .row-actions button:active, .solid-button:active { transform: translateY(1px); }
 .action-message { min-width: 5rem; color: var(--accent); }
 
+.share-dialog { width: min(62rem, calc(100vw - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); padding: 0; overflow: hidden; border: 0; border-radius: 0; background: var(--paper); color: var(--ink); box-shadow: 0 1.5rem 5rem rgb(21 61 59 / .32); }
+.share-dialog::backdrop { background: rgb(21 61 59 / .62); }
+.share-sheet { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; height: min(44rem, calc(100dvh - 2rem)); }
+.share-preview { display: grid; align-items: center; padding: clamp(1.2rem, 4vw, 3rem); background: var(--wash); }
+.share-preview canvas { display: block; width: min(100%, calc(100dvh - 8rem)); height: auto; justify-self: center; }
+.share-options { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; padding: clamp(1.5rem, 4vw, 2.5rem); }
+.share-options h2 { margin: 0 0 1.5rem; font: 400 1.7rem/1.15 var(--serif); letter-spacing: -.025em; }
+.share-options .text-button { min-height: auto; padding: .2rem 0; font: 500 .86rem/1.25 var(--mono); }
+.share-status { min-height: 3rem; margin: .7rem 0 0; color: var(--muted); font: 400 .78rem/1.4 var(--mono); }
+.share-close { margin-top: auto; }
+
 .current-channel { grid-column: 2; grid-row: 1 / 4; min-height: 68vh; display: flex; align-items: stretch; justify-content: flex-end; gap: clamp(.3rem, .6vw, .75rem); overflow: hidden; }
 .current-channel span { display: block; width: clamp(.65rem, 1.4vw, 1.6rem); transform-origin: bottom; --tide-rise: -1.5rem; --tide-fall: .9rem; --tide-duration: 12s; --tide-delay: -4s; }
 .current-channel span:nth-child(1) { height: 100%; align-self: end; background: var(--accent); }
@@ -226,6 +237,12 @@ input::placeholder, textarea::placeholder { color: #657269; opacity: 1; }
   .quotation.is-long blockquote { font-size: clamp(2rem, 9.3vw, 3.1rem); line-height: 1.08; }
   .source-note { grid-column: 1; grid-row: 3; width: auto; margin: 0; grid-template-columns: 1fr; }
   .edition-actions { flex-direction: row; flex-wrap: wrap; gap: .5rem 1.2rem; }
+  .share-dialog { overflow-y: auto; }
+  .share-sheet { height: auto; grid-template-columns: 1fr; }
+  .share-preview { padding: 1rem; }
+  .share-options { padding: 1.4rem; }
+  .share-options h2 { margin-bottom: .8rem; }
+  .share-close { margin-top: .6rem; }
   .site-footer { align-items: flex-start; flex-direction: column; gap: .8rem; padding-top: 2.5rem; }
   .site-footer nav { flex-wrap: wrap; gap: 1rem 1.5rem; }
   .page-heading h1, .admin-heading h1, .editor-heading h1 { font-size: clamp(2.55rem, 13vw, 4.4rem); }
